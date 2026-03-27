@@ -51,6 +51,7 @@ export default function DashboardPage() {
             </span>
           </a>
 
+          <div className="flex items-center gap-3">
           <div className="flex items-center gap-1 bg-surface-elevated rounded-xl border border-border-subtle p-1">
             {tabs.map((tab) => (
               <button
@@ -70,6 +71,14 @@ export default function DashboardPage() {
                 )}
               </button>
             ))}
+          </div>
+          <a
+            href="/plan"
+            className="px-3 py-2 rounded-lg text-xs font-medium text-cyan-glow bg-cyan-glow/10
+                       border border-cyan-glow/20 hover:bg-cyan-glow/15 transition-colors"
+          >
+            Study Plan
+          </a>
           </div>
         </div>
       </header>

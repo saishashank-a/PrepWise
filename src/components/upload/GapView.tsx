@@ -22,6 +22,21 @@ export default function GapView() {
 
   return (
     <div className="space-y-6">
+      {/* Action */}
+      {missing.length > 0 && (
+        <a
+          href="/plan"
+          className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-medium
+                     bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20
+                     hover:bg-emerald-glow/15 transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+          </svg>
+          Create Study Plan to Close {missing.length} Gap{missing.length > 1 ? "s" : ""}
+        </a>
+      )}
+
       {/* Summary */}
       <div className="grid grid-cols-3 gap-3">
         <div className="rounded-xl bg-emerald-glow/[0.05] border border-emerald-glow/10 p-4 text-center">

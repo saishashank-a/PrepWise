@@ -6,6 +6,10 @@ import {
   getDoc,
   collection,
   addDoc,
+  getDocs,
+  query,
+  orderBy,
+  limit,
   serverTimestamp,
 } from "firebase/firestore";
 
@@ -85,6 +89,15 @@ export async function savePlan(
     ...plan,
     createdAt: serverTimestamp(),
   });
+}
+
+export async function getPlan(sessionId: string) {
+  if (!isFirebaseConfigured()) return null;
+  const plansRef = collection(db, "sessions", sessionId, "plans");
+  const q = query(plansRef, orderBy("createdAt", "desc"), limit(1));
+  const snap = await getDocs(q);
+  if (snap.empty) return null;
+  return snap.docs[0].data();
 }
 
 // --- Submissions ---
