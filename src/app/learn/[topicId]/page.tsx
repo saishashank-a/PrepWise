@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { usePlanStore } from "@/stores/usePlanStore";
+import { getAssignmentsByTopic } from "@/lib/assignments";
+import AssignmentCard from "@/components/learning/AssignmentCard";
 import type { Topic } from "@/lib/types";
 
 const STATUS_LABELS = {
@@ -156,20 +158,56 @@ export default function LearnTopicPage() {
           </div>
 
           {/* Assignments section */}
-          <div className="rounded-xl border border-border-subtle bg-surface-elevated/50 p-6 space-y-4">
-            <h2 className="text-sm font-semibold text-foreground/80 flex items-center gap-2">
-              <svg className="w-4 h-4 text-emerald-glow" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-              </svg>
-              Practice Assignments
-            </h2>
-            <div className="rounded-lg bg-surface border border-border-subtle p-4">
-              <p className="text-xs text-text-dim italic">
-                Code editor and practice problems will be available in Phase 3.
-                Track your progress by updating the topic status above.
-              </p>
-            </div>
-          </div>
+          {(() => {
+            const assignments = getAssignmentsByTopic(topic.title);
+            if (assignments.length === 0) {
+              return (
+                <div className="rounded-xl border border-border-subtle bg-surface-elevated/50 p-6 space-y-4">
+                  <h2 className="text-sm font-semibold text-foreground/80 flex items-center gap-2">
+                    <svg className="w-4 h-4 text-emerald-glow" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                    </svg>
+                    Practice
+                  </h2>
+                  <p className="text-xs text-text-dim">
+                    No coding assignments for this topic type. Track your progress by updating the status above.
+                  </p>
+                </div>
+              );
+            }
+
+            return (
+              <div className="rounded-xl border border-border-subtle bg-surface-elevated/50 p-6 space-y-4">
+                <h2 className="text-sm font-semibold text-foreground/80 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-emerald-glow" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                  </svg>
+                  Practice Assignments
+                  <span className="text-[10px] text-text-dim font-normal">({assignments.length})</span>
+                </h2>
+                <div className="space-y-2">
+                  {assignments.map((assignment) => {
+                    let completed = false;
+                    try {
+                      const sub = localStorage.getItem(`prepwise_submission_${assignment.id}`);
+                      if (sub) {
+                        completed = JSON.parse(sub).passed === true;
+                      }
+                    } catch {
+                      // ignore
+                    }
+                    return (
+                      <AssignmentCard
+                        key={assignment.id}
+                        assignment={assignment}
+                        completed={completed}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </main>
     </div>
