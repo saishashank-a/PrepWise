@@ -20,6 +20,7 @@ import LanguageSelector from "@/components/editor/LanguageSelector";
 import RunButton from "@/components/editor/RunButton";
 import OutputPanel from "@/components/editor/OutputPanel";
 import TestResults from "@/components/editor/TestResults";
+import AIFeedback from "@/components/editor/AIFeedback";
 
 export default function PracticePage() {
   const params = useParams();
@@ -259,7 +260,21 @@ export default function PracticePage() {
               </button>
             </div>
             <div className="flex-1 overflow-auto p-2">
-              {activeTab === "output" ? <OutputPanel /> : <TestResults />}
+              {activeTab === "output" ? (
+                <OutputPanel />
+              ) : (
+                <div className="space-y-3 h-full overflow-auto">
+                  <TestResults />
+                  {useEditorStore.getState().testResults && (
+                    <AIFeedback
+                      code={code}
+                      language={language}
+                      problemDescription={assignment.description}
+                      testResults={useEditorStore.getState().testResults!}
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
