@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Sessions: anyone can create and read their own session
+    // In MVP without auth, we rely on the session UUID being unguessable
+    match /sessions/{sessionId}/{document=**} {
+      allow read, write: if true;
+      // TODO: Add auth check when Firebase Auth is added:
+      // allow read, write: if request.auth != null && request.auth.uid == sessionId;
+    }
+  }
+}
