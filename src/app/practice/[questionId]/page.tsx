@@ -14,6 +14,7 @@ import {
   getOrCreateSession,
   isFirebaseConfigured,
 } from "@/lib/firebase";
+import ErrorBoundary from "@/components/common/ErrorBoundary";
 import CodeEditor from "@/components/editor/CodeEditor";
 import LanguageSelector from "@/components/editor/LanguageSelector";
 import RunButton from "@/components/editor/RunButton";
@@ -158,11 +159,11 @@ export default function PracticePage() {
     <div className="h-screen flex flex-col bg-background">
       {/* Header */}
       <header className="shrink-0 glass z-40">
-        <div className="max-w-full mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-full mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-3 min-w-0">
             <a
               href="/plan"
-              className="flex items-center gap-1.5 text-xs text-text-muted hover:text-foreground transition-colors"
+              className="flex items-center gap-1.5 text-xs text-text-muted hover:text-foreground transition-colors shrink-0"
             >
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -170,9 +171,9 @@ export default function PracticePage() {
               Plan
             </a>
             <span className="text-border-subtle">/</span>
-            <h1 className="text-sm font-semibold text-foreground/90">{assignment.title}</h1>
+            <h1 className="text-sm font-semibold text-foreground/90 truncate">{assignment.title}</h1>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <LanguageSelector
               allowedLanguages={assignment.allowedLanguages}
               onLanguageChange={handleLanguageChange}
@@ -182,10 +183,10 @@ export default function PracticePage() {
         </div>
       </header>
 
-      {/* Main content - split layout */}
-      <div className="flex-1 flex overflow-hidden">
+      {/* Main content - split on desktop, stacked on mobile */}
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
         {/* Left panel - Problem description */}
-        <div className="w-[35%] min-w-[300px] border-r border-border-subtle overflow-y-auto p-5 space-y-5">
+        <div className="md:w-[35%] md:min-w-[300px] border-b md:border-b-0 md:border-r border-border-subtle overflow-y-auto p-5 space-y-5 max-h-[40vh] md:max-h-none">
           <div>
             <h2 className="text-sm font-semibold text-foreground/80 mb-3">{assignment.title}</h2>
             <div className="text-xs text-text-muted leading-relaxed whitespace-pre-wrap">
@@ -228,7 +229,9 @@ export default function PracticePage() {
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Code editor */}
           <div className="flex-1 min-h-0 p-2">
-            <CodeEditor onRun={handleRun} />
+            <ErrorBoundary>
+              <CodeEditor onRun={handleRun} />
+            </ErrorBoundary>
           </div>
 
           {/* Output / Test Results tabs */}

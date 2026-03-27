@@ -178,3 +178,104 @@ body {
 .canvas-container canvas {
   display: block;
 }
+
+/* Markdown prose styling */
+.prose-prepwise {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.prose-prepwise h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+}
+
+.prose-prepwise h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-prepwise p {
+  margin-bottom: 0.75rem;
+}
+
+.prose-prepwise strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}
+
+.prose-prepwise code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--color-surface-elevated);
+  color: var(--color-emerald-glow);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.prose-prepwise pre {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+}
+
+.prose-prepwise pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-foreground);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.prose-prepwise ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-prepwise ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-prepwise li {
+  margin-bottom: 0.25rem;
+}
+
+.prose-prepwise blockquote {
+  border-left: 3px solid var(--color-emerald-glow);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: var(--color-text-dim);
+  font-style: italic;
+}
+
+/* highlight.js theme overrides for dark mode */
+.hljs {
+  background: var(--color-surface) !important;
+  color: var(--color-foreground) !important;
+}
+
+.hljs-keyword { color: #c792ea; }
+.hljs-string { color: #c3e88d; }
+.hljs-number { color: #f78c6c; }
+.hljs-comment { color: var(--color-text-dim); font-style: italic; }
+.hljs-function { color: #82aaff; }
+.hljs-built_in { color: #ffcb6b; }
+.hljs-title { color: #82aaff; }
+.hljs-params { color: var(--color-foreground); }
+.hljs-attr { color: #ffcb6b; }
