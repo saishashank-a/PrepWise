@@ -36,7 +36,7 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-40 glass">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
           <a href="/" className="flex items-center gap-2.5 group">
             <div className="relative w-8 h-8">
               <div className="absolute inset-0 bg-emerald-glow/20 rounded-lg blur-md" />
@@ -51,13 +51,13 @@ export default function DashboardPage() {
             </span>
           </a>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto">
           <div className="flex items-center gap-1 bg-surface-elevated rounded-xl border border-border-subtle p-1">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                   activeTab === tab.id
                     ? "bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20"
                     : "text-text-muted hover:text-foreground"
