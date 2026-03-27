@@ -2,11 +2,28 @@
 
 import { useState } from "react";
 import { useProfileStore } from "@/stores/useProfileStore";
+import { extractJDSkills, isAIConfigured } from "@/lib/ai";
 import type { JDSkill } from "@/lib/types";
 
 export default function JDInput() {
   const { jdText, setJDText, jdSkills, addJDSkill, removeJDSkill } = useProfileStore();
   const [skillInput, setSkillInput] = useState("");
+  const [extracting, setExtracting] = useState(false);
+
+  const handleAIExtract = async () => {
+    if (!jdText) return;
+    setExtracting(true);
+    try {
+      const extracted = await extractJDSkills(jdText);
+      for (const skill of extracted) {
+        addJDSkill(skill);
+      }
+    } catch {
+      // silently ignore
+    } finally {
+      setExtracting(false);
+    }
+  };
 
   const handleAddSkill = () => {
     const name = skillInput.trim();
@@ -42,9 +59,33 @@ export default function JDInput() {
 
       {/* Required Skills */}
       <div>
-        <label className="text-sm font-medium text-foreground/80 mb-2 block">
-          Required Skills from JD
-        </label>
+        <div className="flex items-center justify-between mb-2">
+          <label className="text-sm font-medium text-foreground/80">
+            Required Skills from JD
+          </label>
+          {isAIConfigured() && jdText && (
+            <button
+              onClick={handleAIExtract}
+              disabled={extracting}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-medium
+                         bg-cyan-glow/10 text-cyan-glow border border-cyan-glow/20
+                         hover:bg-cyan-glow/15 transition-colors
+                         disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {extracting ? (
+                <svg className="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              ) : (
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                </svg>
+              )}
+              {extracting ? "Extracting..." : "AI Extract from JD"}
+            </button>
+          )}
+        </div>
         <div className="flex gap-2">
           <input
             type="text"

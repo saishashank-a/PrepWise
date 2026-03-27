@@ -8,6 +8,7 @@ import { getTopicContent } from "@/lib/topicContent";
 import AssignmentCard from "@/components/learning/AssignmentCard";
 import TheoryPanel from "@/components/learning/TheoryPanel";
 import ExampleViewer from "@/components/learning/ExampleViewer";
+import AIChat from "@/components/learning/AIChat";
 import type { Topic } from "@/lib/types";
 
 const STATUS_LABELS = {
@@ -171,6 +172,9 @@ export default function LearnTopicPage() {
               <ExampleViewer examples={topicContent.examples} />
             </div>
           )}
+
+          {/* AI Chat */}
+          <AIChat topicTitle={topic.title} />
 
           {/* Assignments section */}
           {(() => {
