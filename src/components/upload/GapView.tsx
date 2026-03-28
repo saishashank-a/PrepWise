@@ -7,13 +7,24 @@ import { generateStudyPlanTopics, isAIConfigured } from "@/lib/ai";
 import { templateToTopic } from "@/lib/templates";
 import type { TopicType, Difficulty } from "@/lib/types";
 
+// Map gap skills to sensible topic types
+function guessTopicType(skill: string): TopicType {
+  const lower = skill.toLowerCase();
+  if (/sql|postgres|mysql|database|query/i.test(lower)) return "sql";
+  if (/system design|architecture|scalab/i.test(lower)) return "system-design";
+  if (/behavioral|leadership|communication/i.test(lower)) return "behavioral";
+  if (/design pattern|oop|concept/i.test(lower)) return "conceptual";
+  return "coding";
+}
+
 export default function GapView() {
   const { skills, jdSkills, getGapAnalysis } = useProfileStore();
-  const { plan, createPlan, addTopic } = usePlanStore();
+  const { plan, createPlan, addTopic, persist } = usePlanStore();
   const [generating, setGenerating] = useState(false);
   const [generated, setGenerated] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleAIGenerate = async () => {
+  const handleGenerate = async () => {
     const gaps = getGapAnalysis();
     const missingSkills = gaps.filter((g) => !g.inResume && g.inJD).map((g) => g.skill);
     const resumeSkills = skills.map((s) => s.name);
@@ -21,28 +32,55 @@ export default function GapView() {
     if (missingSkills.length === 0) return;
 
     setGenerating(true);
-    try {
-      const topics = await generateStudyPlanTopics(missingSkills, resumeSkills);
-      if (!plan) createPlan("AI-Generated Interview Prep");
+    setError(null);
 
-      for (let i = 0; i < topics.length; i++) {
-        const t = topics[i];
-        const topic = templateToTopic(
-          {
-            title: t.title,
-            type: (t.type as TopicType) || "coding",
-            difficulty: (t.difficulty as Difficulty) || "medium",
-          },
-          i + 1,
-        );
-        addTopic(topic);
+    // Create plan first
+    if (!plan) createPlan("Interview Prep Plan");
+
+    let topics: { title: string; type: string; difficulty: string }[] = [];
+
+    // Try AI generation if configured
+    if (isAIConfigured()) {
+      try {
+        const aiTopics = await generateStudyPlanTopics(missingSkills, resumeSkills);
+        if (aiTopics.length > 0) {
+          topics = aiTopics;
+        }
+      } catch {
+        // AI failed, will fall back to basic generation
       }
-      setGenerated(true);
-    } catch {
-      // silently ignore
-    } finally {
-      setGenerating(false);
     }
+
+    // Fallback: generate topics directly from gap skills
+    if (topics.length === 0) {
+      topics = missingSkills.map((skill) => ({
+        title: skill,
+        type: guessTopicType(skill),
+        difficulty: "medium",
+      }));
+    }
+
+    // Add topics to plan
+    const currentPlan = usePlanStore.getState().plan;
+    const startPriority = currentPlan ? currentPlan.topics.length + 1 : 1;
+
+    for (let i = 0; i < topics.length; i++) {
+      const t = topics[i];
+      const topic = templateToTopic(
+        {
+          title: t.title,
+          type: (t.type as TopicType) || "coding",
+          difficulty: (t.difficulty as Difficulty) || "medium",
+        },
+        startPriority + i,
+      );
+      addTopic(topic);
+    }
+
+    // Persist to localStorage/Firebase
+    await persist();
+    setGenerated(true);
+    setGenerating(false);
   };
 
   if (skills.length === 0 && jdSkills.length === 0) {
@@ -64,50 +102,54 @@ export default function GapView() {
     <div className="space-y-6">
       {/* Actions */}
       {missing.length > 0 && (
-        <div className="flex flex-col sm:flex-row gap-2">
-          <a
-            href="/plan"
-            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                       bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20
-                       hover:bg-emerald-glow/15 transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
-            </svg>
-            Manual Study Plan
-          </a>
-          {isAIConfigured() && !generated && (
-            <button
-              onClick={handleAIGenerate}
-              disabled={generating}
-              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                         bg-cyan-glow/10 text-cyan-glow border border-cyan-glow/20
-                         hover:bg-cyan-glow/15 transition-colors
-                         disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {generating ? (
-                <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+        <div className="space-y-2">
+          <div className="flex flex-col sm:flex-row gap-2">
+            {!generated ? (
+              <>
+                <button
+                  onClick={handleGenerate}
+                  disabled={generating}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
+                             bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20
+                             hover:bg-emerald-glow/15 transition-colors
+                             disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {generating ? (
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                    </svg>
+                  )}
+                  {generating ? "Generating Study Plan..." : `Generate Study Plan (${missing.length} gaps)`}
+                </button>
+                <a
+                  href="/plan"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
+                             text-text-muted border border-border-subtle
+                             hover:text-foreground hover:border-emerald-glow/20 transition-colors"
+                >
+                  Build Manually
+                </a>
+              </>
+            ) : (
+              <a
+                href="/plan"
+                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
+                           bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20
+                           hover:bg-emerald-glow/15 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-              ) : (
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                </svg>
-              )}
-              {generating ? "Generating..." : "AI Generate Study Plan"}
-            </button>
-          )}
-          {generated && (
-            <a
-              href="/plan"
-              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                         bg-cyan-glow/10 text-cyan-glow border border-cyan-glow/20
-                         hover:bg-cyan-glow/15 transition-colors"
-            >
-              View AI-Generated Plan
-            </a>
-          )}
+                View Study Plan ({usePlanStore.getState().plan?.topics.length || 0} topics)
+              </a>
+            )}
+          </div>
+          {error && <p className="text-xs text-red-400">{error}</p>}
         </div>
       )}
 
