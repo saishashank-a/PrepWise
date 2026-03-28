@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useProfileStore } from "@/stores/useProfileStore";
-import { extractSkillsFromResume, isAIConfigured } from "@/lib/ai";
 import type { Skill } from "@/lib/types";
 
 const LEVEL_COLORS: Record<Skill["level"], string> = {
@@ -11,10 +10,16 @@ const LEVEL_COLORS: Record<Skill["level"], string> = {
   advanced: "bg-emerald-glow/10 text-emerald-glow border-emerald-glow/20",
 };
 
+const LEVEL_LABELS: Record<Skill["level"], string> = {
+  beginner: "Beginner",
+  intermediate: "Intermediate",
+  advanced: "Advanced",
+};
+
 export default function SkillTagger() {
-  const { skills, addSkill, removeSkill, updateSkillLevel, resumeText } = useProfileStore();
+  const { skills, addSkill, removeSkill, updateSkillLevel } = useProfileStore();
   const [input, setInput] = useState("");
-  const [extracting, setExtracting] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
 
   const handleAdd = () => {
     const name = input.trim();
@@ -36,51 +41,25 @@ export default function SkillTagger() {
     updateSkillLevel(name, next);
   };
 
-  const handleAIExtract = async () => {
-    if (!resumeText) return;
-    setExtracting(true);
-    try {
-      const extracted = await extractSkillsFromResume(resumeText);
-      for (const skill of extracted) {
-        addSkill({ name: skill.name, level: skill.level, source: "resume" });
-      }
-    } catch {
-      // silently ignore — user can still add manually
-    } finally {
-      setExtracting(false);
-    }
-  };
-
   return (
-    <div className="space-y-4">
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <label className="text-sm font-medium text-foreground/80">
-            Your Skills
-          </label>
-          {isAIConfigured() && resumeText && (
-            <button
-              onClick={handleAIExtract}
-              disabled={extracting}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-medium
-                         bg-cyan-glow/10 text-cyan-glow border border-cyan-glow/20
-                         hover:bg-cyan-glow/15 transition-colors
-                         disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {extracting ? (
-                <svg className="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-              ) : (
-                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                </svg>
-              )}
-              {extracting ? "Extracting..." : "AI Extract from Resume"}
-            </button>
+    <div className="space-y-3">
+      <div className="flex items-center justify-between">
+        <label className="text-sm font-medium text-foreground/80">
+          Your Skills
+          {skills.length > 0 && (
+            <span className="ml-2 text-xs text-text-dim font-normal">({skills.length})</span>
           )}
-        </div>
+        </label>
+        <button
+          onClick={() => setShowAdd(!showAdd)}
+          className="text-[10px] text-cyan-glow hover:text-cyan-glow/80 transition-colors"
+        >
+          {showAdd ? "Hide" : "+ Add manually"}
+        </button>
+      </div>
+
+      {/* Manual add (collapsed by default) */}
+      {showAdd && (
         <div className="flex gap-2">
           <input
             type="text"
@@ -88,40 +67,44 @@ export default function SkillTagger() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Add a skill (e.g. Python, React, SQL)"
-            className="flex-1 px-4 py-2.5 rounded-xl bg-surface-elevated border border-border-subtle
+            className="flex-1 px-4 py-2 rounded-xl bg-surface-elevated border border-border-subtle
                        text-sm text-foreground placeholder:text-text-dim
                        focus:outline-none focus:border-emerald-glow/30 transition-colors"
           />
           <button
             onClick={handleAdd}
             disabled={!input.trim()}
-            className="px-4 py-2.5 rounded-xl text-sm font-medium bg-emerald-glow/10 text-emerald-glow
+            className="px-4 py-2 rounded-xl text-sm font-medium bg-emerald-glow/10 text-emerald-glow
                        border border-emerald-glow/20 hover:bg-emerald-glow/15 transition-colors
                        disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Add
           </button>
         </div>
-      </div>
+      )}
 
-      {skills.length > 0 && (
+      {/* Skill tags */}
+      {skills.length > 0 ? (
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <div
               key={skill.name}
-              className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors ${LEVEL_COLORS[skill.level]}`}
+              className={`group flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-lg border text-xs font-medium transition-colors ${LEVEL_COLORS[skill.level]}`}
             >
+              <span className="select-none">{skill.name}</span>
+              {/* Level badge — click to cycle */}
               <button
                 onClick={() => cycleLevel(skill.name, skill.level)}
-                className="hover:opacity-70 transition-opacity"
-                title={`Level: ${skill.level} (click to change)`}
+                className="px-1.5 py-0.5 rounded text-[9px] opacity-60 hover:opacity-100 transition-opacity"
+                title={`${LEVEL_LABELS[skill.level]} — click to change`}
               >
-                {skill.name}
+                {LEVEL_LABELS[skill.level]}
               </button>
-              <span className="text-[10px] opacity-50">{skill.level[0].toUpperCase()}</span>
+              {/* Remove button */}
               <button
                 onClick={() => removeSkill(skill.name)}
-                className="ml-0.5 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-400"
+                className="w-5 h-5 rounded-md flex items-center justify-center opacity-40 hover:opacity-100 hover:bg-red-500/20 hover:text-red-400 transition-all"
+                title="Remove skill"
               >
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -130,12 +113,26 @@ export default function SkillTagger() {
             </div>
           ))}
         </div>
+      ) : (
+        <p className="text-xs text-text-dim py-2">
+          Upload your resume above to auto-extract skills, or add them manually.
+        </p>
       )}
 
       {skills.length > 0 && (
-        <p className="text-[10px] text-text-dim">
-          Click a skill to cycle level: B(eginner) → I(ntermediate) → A(dvanced)
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-[10px] text-text-dim">
+            Click level to cycle: Beginner → Intermediate → Advanced. Click × to remove.
+          </p>
+          {skills.length > 1 && (
+            <button
+              onClick={() => skills.forEach((s) => removeSkill(s.name))}
+              className="text-[10px] text-red-400/60 hover:text-red-400 transition-colors"
+            >
+              Clear all
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
