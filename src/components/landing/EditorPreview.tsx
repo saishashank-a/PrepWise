@@ -72,7 +72,7 @@ export default function EditorPreview() {
   }, [inView]);
 
   return (
-    <section id="editor" className="relative py-32 overflow-hidden">
+    <section id="editor" className="relative py-32 overflow-hidden bg-surface">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <motion.div
@@ -81,16 +81,16 @@ export default function EditorPreview() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-emerald-glow tracking-widest uppercase mb-4 block">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
             Code Editor
           </span>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
             Write. Run. <span className="gradient-text">Verify.</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-text-muted text-lg">
+          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
             Full-featured code editor with in-browser execution. No setup, no
             installs — just open and code.
           </p>
@@ -105,11 +105,11 @@ export default function EditorPreview() {
           transition={{ duration: 0.8 }}
           className="relative max-w-5xl mx-auto"
         >
-          {/* Glow behind editor */}
-          <div className="absolute -inset-4 bg-emerald-glow/[0.03] rounded-3xl blur-2xl" />
+          {/* Subtle glow behind editor */}
+          <div className="absolute -inset-4 bg-primary/[0.03] rounded-3xl blur-2xl" />
 
-          <div className="relative rounded-2xl overflow-hidden border border-border-subtle glow-box">
-            {/* Title bar */}
+          <div className="relative rounded-2xl overflow-hidden border border-border-default shadow-xl">
+            {/* Title bar — keep dark for authentic IDE feel */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#1e1e1e] border-b border-white/[0.06]">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1.5">
@@ -143,7 +143,7 @@ export default function EditorPreview() {
                   </svg>
                 </div>
                 {/* Run button */}
-                <button className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-glow/15 border border-emerald-glow/25 text-emerald-glow text-xs font-medium hover:bg-emerald-glow/20 transition-colors">
+                <button className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-primary/20 border border-primary/30 text-primary text-xs font-medium hover:bg-primary/30 transition-colors">
                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
@@ -172,7 +172,7 @@ export default function EditorPreview() {
                       onClick={() => setActiveTab(tab)}
                       className={`flex-1 px-4 py-2.5 text-xs font-mono capitalize transition-colors ${
                         activeTab === tab
-                          ? "text-emerald-glow border-b border-emerald-glow bg-white/[0.02]"
+                          ? "text-[#60a5fa] border-b border-[#60a5fa] bg-white/[0.02]"
                           : "text-[#6b7280] hover:text-[#9ca3af]"
                       }`}
                     >
@@ -189,7 +189,7 @@ export default function EditorPreview() {
                       className="space-y-3"
                     >
                       <div className="flex items-center gap-2 text-xs text-[#6b7280] font-mono">
-                        <span className="text-emerald-glow">$</span> python
+                        <span className="text-[#60a5fa]">$</span> python
                         two_sum.py
                       </div>
                       <div className="text-sm font-mono text-[#98c379]">
@@ -209,7 +209,7 @@ export default function EditorPreview() {
                           transition={{ delay: i * 0.1 }}
                           className="flex items-start gap-2 p-2 rounded-lg bg-white/[0.02]"
                         >
-                          <span className="mt-0.5 text-emerald-glow text-xs">
+                          <span className="mt-0.5 text-[#34d399] text-xs">
                             <svg
                               className="w-3.5 h-3.5"
                               fill="none"
@@ -234,7 +234,7 @@ export default function EditorPreview() {
                           </div>
                         </motion.div>
                       ))}
-                      <div className="mt-3 pt-3 border-t border-white/[0.06] text-xs font-mono text-emerald-glow">
+                      <div className="mt-3 pt-3 border-t border-white/[0.06] text-xs font-mono text-[#34d399]">
                         4/4 tests passed
                       </div>
                     </div>

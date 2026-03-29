@@ -23,8 +23,10 @@ const features = [
     title: "Resume Analysis",
     description:
       "Upload your PDF or DOCX resume. Our in-browser parser extracts your skills instantly — no server uploads, no data leaves your machine.",
-    gradient: "from-emerald-glow/20 to-cyan-glow/10",
-    glowColor: "emerald-glow",
+    gradient: "from-primary/10 to-success/5",
+    iconColor: "text-primary",
+    borderColor: "border-primary/10",
+    hoverGlow: "bg-primary/[0.04]",
   },
   {
     icon: (
@@ -45,8 +47,10 @@ const features = [
     title: "Gap Analysis",
     description:
       "Paste any job description. See a side-by-side comparison of what you know versus what's required. Identify exactly where to focus.",
-    gradient: "from-cyan-glow/20 to-emerald-glow/10",
-    glowColor: "cyan-glow",
+    gradient: "from-success/10 to-primary/5",
+    iconColor: "text-success",
+    borderColor: "border-success/10",
+    hoverGlow: "bg-success/[0.04]",
   },
   {
     icon: (
@@ -65,8 +69,10 @@ const features = [
     title: "Smart Study Plans",
     description:
       "Build a prioritized learning path with topics, difficulty levels, and progress tracking. Pre-built templates for DSA, SQL, System Design.",
-    gradient: "from-emerald-glow/15 to-emerald-glow/5",
-    glowColor: "emerald-glow",
+    gradient: "from-primary/10 to-primary/5",
+    iconColor: "text-primary",
+    borderColor: "border-primary/10",
+    hoverGlow: "bg-primary/[0.04]",
   },
   {
     icon: (
@@ -86,8 +92,10 @@ const features = [
     title: "In-Browser Code Editor",
     description:
       "Monaco Editor with syntax highlighting, autocomplete, and real execution. Python via Pyodide, SQL via PGlite, JS sandboxed, Java via JDoodle.",
-    gradient: "from-cyan-glow/20 to-emerald-glow/10",
-    glowColor: "cyan-glow",
+    gradient: "from-success/10 to-primary/5",
+    iconColor: "text-success",
+    borderColor: "border-success/10",
+    hoverGlow: "bg-success/[0.04]",
   },
   {
     icon: (
@@ -106,8 +114,10 @@ const features = [
     title: "Auto-Grading",
     description:
       "Write code, hit run, get instant feedback. Test cases validate your output automatically. Track every submission and build confidence.",
-    gradient: "from-emerald-glow/20 to-cyan-glow/10",
-    glowColor: "emerald-glow",
+    gradient: "from-primary/10 to-success/5",
+    iconColor: "text-primary",
+    borderColor: "border-primary/10",
+    hoverGlow: "bg-primary/[0.04]",
   },
   {
     icon: (
@@ -132,16 +142,18 @@ const features = [
     title: "AI-Ready Architecture",
     description:
       "Pluggable AI layer for when you're ready. Swap in Gemini, Claude, or any LLM for smart resume parsing, plan generation, and code evaluation.",
-    gradient: "from-cyan-glow/15 to-cyan-glow/5",
-    glowColor: "cyan-glow",
+    gradient: "from-success/10 to-success/5",
+    iconColor: "text-success",
+    borderColor: "border-success/10",
+    hoverGlow: "bg-success/[0.04]",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-32 overflow-hidden">
+    <section id="features" className="relative py-32 overflow-hidden bg-white">
       {/* Background grid */}
-      <div className="absolute inset-0 grid-bg opacity-40 overflow-hidden" />
+      <div className="absolute inset-0 grid-bg opacity-20 overflow-hidden" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Section header */}
@@ -151,17 +163,17 @@ export default function Features() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <span className="text-xs font-mono text-emerald-glow tracking-widest uppercase mb-4 block">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
             Features
           </span>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
             Everything You Need to{" "}
             <span className="gradient-text">Prepare</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-text-muted text-lg">
+          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
             From resume analysis to in-browser coding practice — a complete
             interview prep workflow that runs entirely in your browser.
           </p>
@@ -179,30 +191,31 @@ export default function Features() {
               className="group relative"
             >
               <div
-                className="relative h-full p-7 rounded-2xl bg-surface-elevated/80 backdrop-blur-sm
-                           border border-border-subtle hover:border-border-glow
+                className="relative h-full p-7 rounded-2xl bg-white
+                           border border-border-default hover:border-primary/30
+                           shadow-sm hover:shadow-md
                            transition-all duration-500 overflow-hidden"
               >
                 {/* Hover glow */}
                 <div
-                  className={`absolute -top-20 -right-20 w-40 h-40 bg-${feature.glowColor}/[0.06] rounded-full blur-3xl
+                  className={`absolute -top-20 -right-20 w-40 h-40 ${feature.hoverGlow} rounded-full blur-3xl
                               opacity-0 group-hover:opacity-100 transition-opacity duration-700`}
                 />
 
                 {/* Icon */}
                 <div
                   className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.gradient}
-                              flex items-center justify-center text-${feature.glowColor} mb-5
-                              border border-${feature.glowColor}/10`}
+                              flex items-center justify-center ${feature.iconColor} mb-5
+                              border ${feature.borderColor}`}
                 >
                   {feature.icon}
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-emerald-glow/90 transition-colors">
+                <h3 className="text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-text-muted leading-relaxed">
+                <p className="text-sm text-text-secondary leading-relaxed">
                   {feature.description}
                 </p>
               </div>
