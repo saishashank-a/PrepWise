@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${jetbrains.variable} ${syne.variable} h-full antialiased`}
     >
-      <body className="min-h-full noise">{children}</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
