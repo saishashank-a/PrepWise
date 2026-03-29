@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Editor", href: "#editor" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Resume Builder", href: "/resume-builder" },
 ];
 
 export default function Navbar() {

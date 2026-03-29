@@ -79,6 +79,13 @@ export default function DashboardPage() {
           >
             Study Plan
           </a>
+          <a
+            href="/resume-builder"
+            className="px-3 py-2 rounded-lg text-xs font-medium text-emerald-glow/70 bg-emerald-glow/[0.05]
+                       border border-emerald-glow/10 hover:bg-emerald-glow/10 transition-colors"
+          >
+            Resume Builder
+          </a>
           </div>
         </div>
       </header>
