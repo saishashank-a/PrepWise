@@ -54,7 +54,7 @@ export async function exportToPDF(sections: ResumeSection[], fileName: string): 
 export async function exportToDOCX(sections: ResumeSection[], fileName: string): Promise<void> {
   const docx = await import("docx");
 
-  const children: docx.Paragraph[] = [];
+  const children: InstanceType<typeof docx.Paragraph>[] = [];
 
   for (const section of sections) {
     children.push(
