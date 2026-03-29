@@ -119,3 +119,32 @@ export async function saveSubmission(
     submittedAt: serverTimestamp(),
   });
 }
+
+// --- Resumes ---
+
+export async function saveResumes(
+  sessionId: string,
+  resumes: {
+    id: string;
+    roleTitle: string;
+    company: string;
+    jdText: string;
+    sections: { id: string; type: string; title: string; content: string }[];
+    fullDocument: string;
+    atsScore: number | null;
+    createdAt: string;
+    updatedAt: string;
+  }[],
+) {
+  if (!isFirebaseConfigured()) return;
+  await setDoc(doc(db, "sessions", sessionId, "resumes", "all"), {
+    resumes,
+    updatedAt: serverTimestamp(),
+  });
+}
+
+export async function getResumes(sessionId: string) {
+  if (!isFirebaseConfigured()) return null;
+  const snap = await getDoc(doc(db, "sessions", sessionId, "resumes", "all"));
+  return snap.exists() ? snap.data().resumes : null;
+}
