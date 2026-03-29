@@ -22,14 +22,14 @@ export default function ResumeLibrary() {
         <h1 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-cabinet)" }}>
           My Resumes
         </h1>
-        <p className="text-sm text-text-muted">
+        <p className="text-sm text-text-secondary">
           All your tailored resumes, organized by role.
         </p>
       </div>
 
       {resumes.length === 0 ? (
-        <div className="rounded-xl border border-border-subtle bg-surface-elevated/50 p-8 text-center">
-          <p className="text-sm text-text-dim">
+        <div className="rounded-xl border border-border-default bg-surface p-8 text-center">
+          <p className="text-sm text-text-muted">
             No resumes yet. Generate a tailored resume from the Generate tab to see it here.
           </p>
         </div>

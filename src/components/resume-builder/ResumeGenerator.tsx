@@ -127,19 +127,19 @@ export default function ResumeGenerator() {
           <h1 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-cabinet)" }}>
             Generate Tailored Resume
           </h1>
-          <p className="text-sm text-text-muted">
+          <p className="text-sm text-text-secondary">
             Create a resume optimized for a specific role using AI.
           </p>
         </div>
-        <div className="rounded-xl border border-border-subtle bg-surface-elevated/50 p-8 text-center">
-          <div className="w-12 h-12 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center mx-auto mb-4">
+        <div className="rounded-xl border border-border-default bg-surface p-8 text-center">
+          <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center mx-auto mb-4">
             <svg className="w-5 h-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
             </svg>
           </div>
-          <p className="text-sm text-text-muted mb-2">AI resume generation requires a Gemini API key.</p>
-          <p className="text-xs text-text-dim">
-            Set <code className="text-emerald-glow bg-surface px-1.5 py-0.5 rounded text-[11px]">NEXT_PUBLIC_GEMINI_API_KEY</code> in your environment to enable this feature.
+          <p className="text-sm text-text-secondary mb-2">AI resume generation requires a Gemini API key.</p>
+          <p className="text-xs text-text-muted">
+            Set <code className="text-primary bg-surface px-1.5 py-0.5 rounded text-[11px]">NEXT_PUBLIC_GEMINI_API_KEY</code> in your environment to enable this feature.
           </p>
         </div>
       </div>
@@ -152,7 +152,7 @@ export default function ResumeGenerator() {
         <h1 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-cabinet)" }}>
           Generate Tailored Resume
         </h1>
-        <p className="text-sm text-text-muted">
+        <p className="text-sm text-text-secondary">
           Create a resume optimized for a specific role using your existing resume and the job description.
         </p>
       </div>
@@ -163,15 +163,15 @@ export default function ResumeGenerator() {
           value={roleTitle}
           onChange={(e) => setRoleTitle(e.target.value)}
           placeholder="Role title (e.g. Senior Frontend Engineer)"
-          className="flex-1 rounded-xl bg-surface-elevated border border-border-subtle px-4 py-2.5 text-sm
-                     placeholder:text-text-dim focus:outline-none focus:border-emerald-glow/20 transition-colors"
+          className="flex-1 rounded-xl bg-white border border-border-default px-4 py-2.5 text-sm
+                     placeholder:text-text-muted focus:outline-none focus:border-primary-border transition-colors"
         />
         <input
           value={company}
           onChange={(e) => setCompany(e.target.value)}
           placeholder="Company"
-          className="w-48 rounded-xl bg-surface-elevated border border-border-subtle px-4 py-2.5 text-sm
-                     placeholder:text-text-dim focus:outline-none focus:border-emerald-glow/20 transition-colors"
+          className="w-48 rounded-xl bg-white border border-border-default px-4 py-2.5 text-sm
+                     placeholder:text-text-muted focus:outline-none focus:border-primary-border transition-colors"
         />
       </div>
 
@@ -184,25 +184,25 @@ export default function ResumeGenerator() {
                 if (profileStore.jdText) setJdText(profileStore.jdText);
               }}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-medium
-                         text-cyan-glow bg-cyan-glow/10 border border-cyan-glow/20 hover:bg-cyan-glow/15 transition-colors"
+                         text-success bg-success-light border border-success-border hover:bg-success-light transition-colors"
             >
               Use resume &amp; JD from Dashboard
             </button>
           )}
 
           <div>
-            <div className="text-xs uppercase tracking-wider text-text-dim font-medium mb-2.5">Resume</div>
+            <div className="text-xs uppercase tracking-wider text-text-muted font-medium mb-2.5">Resume</div>
             {resumeText ? (
-              <div className="flex items-center justify-between rounded-xl bg-surface-elevated border border-border-subtle p-4">
+              <div className="flex items-center justify-between rounded-xl bg-white border border-border-default p-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-emerald-glow/10 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-emerald-glow" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <div className="w-6 h-6 rounded-md bg-primary-light flex items-center justify-center">
+                    <svg className="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-sm text-emerald-glow">Resume loaded</span>
+                  <span className="text-sm text-primary">Resume loaded</span>
                 </div>
-                <button onClick={() => setResumeText("")} className="text-xs text-text-muted hover:text-foreground transition-colors">
+                <button onClick={() => setResumeText("")} className="text-xs text-text-secondary hover:text-foreground transition-colors">
                   Replace
                 </button>
               </div>
@@ -210,27 +210,27 @@ export default function ResumeGenerator() {
               <div
                 {...getRootProps()}
                 className={`rounded-xl border-2 border-dashed p-6 text-center cursor-pointer transition-all
-                  ${isDragActive ? "border-emerald-glow/50 bg-emerald-glow/[0.03]" : "border-border-subtle hover:border-emerald-glow/20"}
+                  ${isDragActive ? "border-primary-border bg-primary-light" : "border-border-default hover:border-primary-border"}
                   ${parsing ? "pointer-events-none opacity-60" : ""}`}
               >
                 <input {...getInputProps()} />
-                <p className="text-sm text-foreground/80">
+                <p className="text-sm text-foreground">
                   {parsing ? "Parsing..." : "Drop resume or click to upload"}
                 </p>
-                <p className="text-xs text-text-dim mt-1">PDF or DOCX</p>
+                <p className="text-xs text-text-muted mt-1">PDF or DOCX</p>
               </div>
             )}
           </div>
 
           <div>
-            <div className="text-xs uppercase tracking-wider text-text-dim font-medium mb-2.5">Job Description</div>
+            <div className="text-xs uppercase tracking-wider text-text-muted font-medium mb-2.5">Job Description</div>
             <textarea
               value={jdText}
               onChange={(e) => setJdText(e.target.value)}
               placeholder="Paste the job description here..."
               rows={5}
-              className="w-full rounded-xl bg-surface-elevated border border-border-subtle p-4 text-sm
-                         placeholder:text-text-dim resize-none focus:outline-none focus:border-emerald-glow/20 transition-colors"
+              className="w-full rounded-xl bg-white border border-border-default p-4 text-sm
+                         placeholder:text-text-muted resize-none focus:outline-none focus:border-primary-border transition-colors"
             />
           </div>
         </>
@@ -244,14 +244,14 @@ export default function ResumeGenerator() {
             onClick={() => setMode(m)}
             className={`flex-1 p-3.5 rounded-xl transition-all text-left ${
               mode === m
-                ? "bg-emerald-glow/[0.08] border border-emerald-glow/25"
-                : "bg-surface-elevated border border-border-subtle"
+                ? "bg-primary-light border border-primary-border"
+                : "bg-white border border-border-default"
             }`}
           >
-            <div className={`text-sm font-semibold ${mode === m ? "text-emerald-glow" : ""}`}>
+            <div className={`text-sm font-semibold ${mode === m ? "text-primary" : ""}`}>
               {m === "sections" ? "Section Editor" : "Full Document"}
             </div>
-            <div className="text-xs text-text-dim mt-1">
+            <div className="text-xs text-text-muted mt-1">
               {m === "sections" ? "Edit each section individually" : "Generate complete resume at once"}
             </div>
           </button>
@@ -263,8 +263,8 @@ export default function ResumeGenerator() {
           onClick={handleGenerate}
           disabled={!resumeText || !jdText || generating}
           className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                     bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20
-                     hover:bg-emerald-glow/15 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                     bg-primary-light text-primary border border-primary-border
+                     hover:bg-primary-light transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {generating ? (
             <>
@@ -310,13 +310,13 @@ export default function ResumeGenerator() {
       )}
 
       {mode === "full" && fullText && (
-        <div className="rounded-xl bg-surface-elevated border border-border-subtle p-4">
+        <div className="rounded-xl bg-white border border-border-default p-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-[13px] font-semibold">Full Resume</span>
             <button
               onClick={handleGenerate}
               disabled={generating}
-              className="text-[11px] text-emerald-glow hover:opacity-70 disabled:opacity-40"
+              className="text-[11px] text-primary hover:opacity-70 disabled:opacity-40"
             >
               {generating ? "..." : "✦ Regenerate"}
             </button>
@@ -325,8 +325,8 @@ export default function ResumeGenerator() {
             value={fullText}
             onChange={(e) => setFullText(e.target.value)}
             rows={20}
-            className="w-full bg-surface border border-border-subtle rounded-lg p-3 text-[13px] text-foreground/80
-                       resize-y focus:outline-none focus:border-emerald-glow/20 transition-colors leading-relaxed font-mono"
+            className="w-full bg-surface border border-border-default rounded-lg p-3 text-[13px] text-foreground
+                       resize-y focus:outline-none focus:border-primary-border transition-colors leading-relaxed font-mono"
           />
         </div>
       )}
@@ -336,7 +336,7 @@ export default function ResumeGenerator() {
           <button
             onClick={handleDownloadPDF}
             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                       bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20 hover:bg-emerald-glow/15 transition-colors"
+                       bg-primary-light text-primary border border-primary-border hover:bg-primary-light transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -346,7 +346,7 @@ export default function ResumeGenerator() {
           <button
             onClick={handleDownloadDOCX}
             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                       text-text-muted border border-border-subtle hover:text-foreground hover:border-emerald-glow/20 transition-colors"
+                       text-text-secondary border border-border-default hover:text-foreground hover:border-primary-border transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -356,7 +356,7 @@ export default function ResumeGenerator() {
           <button
             onClick={handleSave}
             className="px-6 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                       text-text-muted border border-border-subtle hover:text-foreground hover:border-emerald-glow/20 transition-colors"
+                       text-text-secondary border border-border-default hover:text-foreground hover:border-primary-border transition-colors"
           >
             Save
           </button>
