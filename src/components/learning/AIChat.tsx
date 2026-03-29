@@ -55,8 +55,8 @@ export default function AIChat({ topicTitle }: AIChatProps) {
       <button
         onClick={() => setExpanded(true)}
         className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                   bg-cyan-glow/[0.05] text-cyan-glow border border-cyan-glow/10
-                   hover:bg-cyan-glow/10 transition-colors"
+                   bg-success-light text-success border border-success-border
+                   hover:bg-success-light transition-colors"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
@@ -67,18 +67,18 @@ export default function AIChat({ topicTitle }: AIChatProps) {
   }
 
   return (
-    <div className="rounded-xl border border-cyan-glow/10 bg-surface-elevated/50 overflow-hidden">
+    <div className="rounded-xl border border-success-border bg-surface overflow-hidden">
       {/* Header */}
-      <div className="px-4 py-2.5 bg-cyan-glow/[0.03] border-b border-cyan-glow/10 flex items-center justify-between">
+      <div className="px-4 py-2.5 bg-success-light border-b border-success-border flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <svg className="w-4 h-4 text-cyan-glow" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <svg className="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
           </svg>
-          <span className="text-xs font-medium text-cyan-glow">AI Coach — {topicTitle}</span>
+          <span className="text-xs font-medium text-success">AI Coach — {topicTitle}</span>
         </div>
         <button
           onClick={() => setExpanded(false)}
-          className="text-text-dim hover:text-foreground transition-colors"
+          className="text-text-muted hover:text-foreground transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -89,7 +89,7 @@ export default function AIChat({ topicTitle }: AIChatProps) {
       {/* Messages */}
       <div ref={scrollRef} className="max-h-[400px] overflow-y-auto p-4 space-y-4">
         {messages.length === 0 && (
-          <p className="text-xs text-text-dim text-center py-4">
+          <p className="text-xs text-text-muted text-center py-4">
             Ask anything about {topicTitle}. I&apos;ll help you prepare.
           </p>
         )}
@@ -98,8 +98,8 @@ export default function AIChat({ topicTitle }: AIChatProps) {
             <div
               className={`max-w-[85%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed ${
                 msg.role === "user"
-                  ? "bg-emerald-glow/10 text-foreground/90 border border-emerald-glow/10"
-                  : "bg-surface border border-border-subtle"
+                  ? "bg-primary-light text-foreground border border-primary-border"
+                  : "bg-white border border-border-default"
               }`}
             >
               {msg.role === "assistant" ? (
@@ -114,11 +114,11 @@ export default function AIChat({ topicTitle }: AIChatProps) {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-surface border border-border-subtle rounded-xl px-3.5 py-2.5">
+            <div className="bg-white border border-border-default rounded-xl px-3.5 py-2.5">
               <div className="flex gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-glow/40 animate-bounce" style={{ animationDelay: "0ms" }} />
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-glow/40 animate-bounce" style={{ animationDelay: "150ms" }} />
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-glow/40 animate-bounce" style={{ animationDelay: "300ms" }} />
+                <div className="w-1.5 h-1.5 rounded-full bg-success/40 animate-bounce" style={{ animationDelay: "0ms" }} />
+                <div className="w-1.5 h-1.5 rounded-full bg-success/40 animate-bounce" style={{ animationDelay: "150ms" }} />
+                <div className="w-1.5 h-1.5 rounded-full bg-success/40 animate-bounce" style={{ animationDelay: "300ms" }} />
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function AIChat({ topicTitle }: AIChatProps) {
       </div>
 
       {/* Input */}
-      <div className="p-3 border-t border-border-subtle">
+      <div className="p-3 border-t border-border-default">
         <div className="flex gap-2">
           <input
             type="text"
@@ -135,16 +135,16 @@ export default function AIChat({ topicTitle }: AIChatProps) {
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Ask a question..."
             disabled={loading}
-            className="flex-1 px-3 py-2 rounded-lg bg-surface border border-border-subtle
-                       text-xs text-foreground placeholder:text-text-dim
-                       focus:outline-none focus:border-cyan-glow/30 transition-colors
+            className="flex-1 px-3 py-2 rounded-lg bg-white border border-border-default
+                       text-xs text-foreground placeholder:text-text-muted
+                       focus:outline-none focus:border-success-border transition-colors
                        disabled:opacity-50"
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || loading}
-            className="px-3 py-2 rounded-lg text-xs font-medium bg-cyan-glow/10 text-cyan-glow
-                       border border-cyan-glow/20 hover:bg-cyan-glow/15 transition-colors
+            className="px-3 py-2 rounded-lg text-xs font-medium bg-success-light text-success
+                       border border-success-border hover:bg-success-light transition-colors
                        disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Send

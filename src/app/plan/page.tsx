@@ -23,30 +23,30 @@ export default function PlanPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-40 glass">
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-border-default">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2.5 group">
             <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-emerald-glow/20 rounded-lg blur-md" />
-              <div className="relative w-full h-full bg-surface-elevated rounded-lg border border-emerald-glow/20 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-emerald-glow">
+              <div className="absolute inset-0 bg-primary-light rounded-lg blur-md" />
+              <div className="relative w-full h-full bg-white rounded-lg border border-primary-border flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary">
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
                 </svg>
               </div>
             </div>
             <span className="text-lg font-bold tracking-tight" style={{ fontFamily: "var(--font-cabinet)" }}>
-              Prep<span className="text-emerald-glow">Wise</span>
+              Prep<span className="text-primary">Wise</span>
             </span>
           </a>
 
           <div className="flex items-center gap-3">
             <a
               href="/dashboard"
-              className="px-3 py-1.5 rounded-lg text-xs text-text-muted hover:text-foreground transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs text-text-secondary hover:text-foreground transition-colors"
             >
               Dashboard
             </a>
-            <div className="px-3 py-1.5 rounded-lg text-xs font-medium text-emerald-glow bg-emerald-glow/10 border border-emerald-glow/20">
+            <div className="px-3 py-1.5 rounded-lg text-xs font-medium text-primary bg-primary-light border border-primary-border">
               Study Plan
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function PlanPage() {
             >
               Study Plan
             </h1>
-            <p className="text-sm text-text-muted">
+            <p className="text-sm text-text-secondary">
               Build a prioritized learning path. Add topics, set difficulty, and track your progress.
             </p>
           </div>

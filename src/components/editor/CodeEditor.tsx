@@ -7,7 +7,7 @@ const Editor = dynamic(() => import("@monaco-editor/react"), {
   ssr: false,
   loading: () => (
     <div className="h-full w-full bg-surface rounded-xl animate-pulse flex items-center justify-center">
-      <span className="text-xs text-text-dim">Loading editor...</span>
+      <span className="text-xs text-text-muted">Loading editor...</span>
     </div>
   ),
 });
@@ -27,7 +27,7 @@ export default function CodeEditor({ onRun }: CodeEditorProps) {
   const { code, language, setCode } = useEditorStore();
 
   return (
-    <div className="h-full rounded-xl overflow-hidden border border-border-subtle">
+    <div className="h-full rounded-xl overflow-hidden border border-border-default">
       <Editor
         height="100%"
         language={LANGUAGE_MAP[language]}

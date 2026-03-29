@@ -142,15 +142,15 @@ export default function PracticePage() {
   if (!assignment) {
     return (
       <div className="min-h-screen bg-background">
-        <header className="sticky top-0 z-40 glass">
+        <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-border-default">
           <div className="max-w-7xl mx-auto px-6 py-4">
-            <a href="/plan" className="text-sm text-text-muted hover:text-foreground transition-colors">
+            <a href="/plan" className="text-sm text-text-secondary hover:text-foreground transition-colors">
               &larr; Back to Plan
             </a>
           </div>
         </header>
         <main className="max-w-7xl mx-auto px-6 py-20 text-center">
-          <p className="text-sm text-text-dim">Assignment not found.</p>
+          <p className="text-sm text-text-muted">Assignment not found.</p>
         </main>
       </div>
     );
@@ -159,20 +159,20 @@ export default function PracticePage() {
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="shrink-0 glass z-40">
+      <header className="shrink-0 bg-white/80 backdrop-blur border-b border-border-default z-40">
         <div className="max-w-full mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3 min-w-0">
             <a
               href="/plan"
-              className="flex items-center gap-1.5 text-xs text-text-muted hover:text-foreground transition-colors shrink-0"
+              className="flex items-center gap-1.5 text-xs text-text-secondary hover:text-foreground transition-colors shrink-0"
             >
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
               Plan
             </a>
-            <span className="text-border-subtle">/</span>
-            <h1 className="text-sm font-semibold text-foreground/90 truncate">{assignment.title}</h1>
+            <span className="text-border-default">/</span>
+            <h1 className="text-sm font-semibold text-foreground truncate">{assignment.title}</h1>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <LanguageSelector
@@ -187,35 +187,35 @@ export default function PracticePage() {
       {/* Main content - split on desktop, stacked on mobile */}
       <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
         {/* Left panel - Problem description */}
-        <div className="md:w-[35%] md:min-w-[300px] border-b md:border-b-0 md:border-r border-border-subtle overflow-y-auto p-5 space-y-5 max-h-[40vh] md:max-h-none">
+        <div className="md:w-[35%] md:min-w-[300px] border-b md:border-b-0 md:border-r border-border-default overflow-y-auto p-5 space-y-5 max-h-[40vh] md:max-h-none">
           <div>
-            <h2 className="text-sm font-semibold text-foreground/80 mb-3">{assignment.title}</h2>
-            <div className="text-xs text-text-muted leading-relaxed whitespace-pre-wrap">
+            <h2 className="text-sm font-semibold text-foreground mb-3">{assignment.title}</h2>
+            <div className="text-xs text-text-secondary leading-relaxed whitespace-pre-wrap">
               {assignment.description}
             </div>
           </div>
 
           {/* Visible test cases */}
           <div>
-            <h3 className="text-xs font-semibold text-text-dim uppercase tracking-wider mb-2">
+            <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2">
               Test Cases
             </h3>
             <div className="space-y-2">
               {assignment.testCases.map((tc, i) => (
-                <div key={tc.id} className="rounded-lg bg-surface-elevated border border-border-subtle p-3">
-                  <div className="text-[10px] text-text-dim mb-1.5">Test {i + 1}: {tc.description}</div>
+                <div key={tc.id} className="rounded-lg bg-white border border-border-default p-3">
+                  <div className="text-[10px] text-text-muted mb-1.5">Test {i + 1}: {tc.description}</div>
                   <div className="space-y-1">
                     {tc.input && (
                       <div className="text-[10px]">
-                        <span className="text-text-dim">Input: </span>
-                        <code className="text-foreground/70 bg-surface px-1 py-0.5 rounded font-mono">
+                        <span className="text-text-muted">Input: </span>
+                        <code className="text-foreground bg-surface px-1 py-0.5 rounded font-mono">
                           {tc.input.replace(/\n/g, " \\n ")}
                         </code>
                       </div>
                     )}
                     <div className="text-[10px]">
-                      <span className="text-text-dim">Expected: </span>
-                      <code className="text-emerald-glow/70 bg-surface px-1 py-0.5 rounded font-mono">
+                      <span className="text-text-muted">Expected: </span>
+                      <code className="text-primary bg-surface px-1 py-0.5 rounded font-mono">
                         {tc.expectedOutput}
                       </code>
                     </div>
@@ -236,14 +236,14 @@ export default function PracticePage() {
           </div>
 
           {/* Output / Test Results tabs */}
-          <div className="h-[35%] min-h-[150px] border-t border-border-subtle flex flex-col">
+          <div className="h-[35%] min-h-[150px] border-t border-border-default flex flex-col">
             <div className="shrink-0 flex gap-1 px-2 pt-2">
               <button
                 onClick={() => setActiveTab("output")}
                 className={`px-3 py-1 rounded-t-lg text-[10px] font-medium transition-colors ${
                   activeTab === "output"
-                    ? "text-emerald-glow bg-surface border border-b-0 border-border-subtle"
-                    : "text-text-dim hover:text-text-muted"
+                    ? "text-primary bg-surface border border-b-0 border-border-default"
+                    : "text-text-muted hover:text-text-secondary"
                 }`}
               >
                 Output
@@ -252,8 +252,8 @@ export default function PracticePage() {
                 onClick={() => setActiveTab("tests")}
                 className={`px-3 py-1 rounded-t-lg text-[10px] font-medium transition-colors ${
                   activeTab === "tests"
-                    ? "text-cyan-glow bg-surface border border-b-0 border-border-subtle"
-                    : "text-text-dim hover:text-text-muted"
+                    ? "text-success bg-surface border border-b-0 border-border-default"
+                    : "text-text-muted hover:text-text-secondary"
                 }`}
               >
                 Test Results

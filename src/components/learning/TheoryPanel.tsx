@@ -10,8 +10,8 @@ interface TheoryPanelProps {
 export default function TheoryPanel({ content }: TheoryPanelProps) {
   if (!content) {
     return (
-      <div className="rounded-lg bg-surface border border-border-subtle p-4">
-        <p className="text-xs text-text-dim italic">No theory content available yet.</p>
+      <div className="rounded-lg bg-surface border border-border-default p-4">
+        <p className="text-xs text-text-muted italic">No theory content available yet.</p>
       </div>
     );
   }
