@@ -29,7 +29,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "glass py-3"
+            ? "bg-white/80 backdrop-blur-xl border-b border-border-default py-3"
             : "bg-transparent py-5"
         }`}
       >
@@ -37,14 +37,14 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
             <div className="relative w-9 h-9">
-              <div className="absolute inset-0 bg-emerald-glow/20 rounded-lg blur-md group-hover:bg-emerald-glow/30 transition-colors" />
-              <div className="relative w-full h-full bg-surface-elevated rounded-lg border border-emerald-glow/20 flex items-center justify-center">
+              <div className="absolute inset-0 bg-primary/20 rounded-lg blur-md group-hover:bg-primary/30 transition-colors" />
+              <div className="relative w-full h-full bg-white rounded-lg border border-primary/20 flex items-center justify-center">
                 <svg
                   width="18"
                   height="18"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="text-emerald-glow"
+                  className="text-primary"
                 >
                   <path
                     d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
@@ -54,10 +54,10 @@ export default function Navbar() {
               </div>
             </div>
             <span
-              className="text-lg font-bold tracking-tight"
+              className="text-lg font-bold tracking-tight text-foreground"
               style={{ fontFamily: "var(--font-cabinet)" }}
             >
-              Prep<span className="text-emerald-glow">Wise</span>
+              Prep<span className="text-primary">Wise</span>
             </span>
           </a>
 
@@ -67,7 +67,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm text-text-muted hover:text-foreground transition-colors rounded-lg hover:bg-white/[0.03]"
+                className="px-4 py-2 text-sm text-text-secondary hover:text-foreground transition-colors rounded-lg hover:bg-slate-100"
               >
                 {link.label}
               </a>
@@ -78,18 +78,16 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <a
               href="#"
-              className="px-4 py-2 text-sm text-text-muted hover:text-foreground transition-colors"
+              className="px-4 py-2 text-sm text-text-secondary hover:text-foreground transition-colors"
             >
               Sign In
             </a>
             <a
               href="/dashboard"
-              className="relative px-5 py-2.5 text-sm font-medium bg-emerald-glow/10 text-emerald-glow rounded-lg
-                         border border-emerald-glow/20 hover:bg-emerald-glow/15 hover:border-emerald-glow/30
-                         transition-all duration-300 group"
+              className="relative px-5 py-2.5 text-sm font-medium bg-primary text-white rounded-lg
+                         hover:bg-primary/90 transition-all duration-300"
             >
               <span className="relative z-10">Get Started</span>
-              <div className="absolute inset-0 rounded-lg bg-emerald-glow/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
           </div>
 
@@ -119,7 +117,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 pt-20 bg-background/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 pt-20 bg-white/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col items-center gap-6 pt-10">
               {navLinks.map((link) => (
@@ -127,7 +125,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-light text-text-muted hover:text-foreground transition-colors"
+                  className="text-2xl font-light text-text-secondary hover:text-foreground transition-colors"
                   style={{ fontFamily: "var(--font-cabinet)" }}
                 >
                   {link.label}
@@ -135,7 +133,7 @@ export default function Navbar() {
               ))}
               <a
                 href="#"
-                className="mt-4 px-8 py-3 bg-emerald-glow/10 text-emerald-glow rounded-lg border border-emerald-glow/20"
+                className="mt-4 px-8 py-3 bg-primary text-white rounded-lg font-medium"
               >
                 Get Started
               </a>

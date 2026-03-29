@@ -7,7 +7,7 @@ import type { Skill } from "@/lib/types";
 const LEVEL_COLORS: Record<Skill["level"], string> = {
   beginner: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
   intermediate: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  advanced: "bg-emerald-glow/10 text-emerald-glow border-emerald-glow/20",
+  advanced: "bg-primary-light text-primary border-primary-border",
 };
 
 const LEVEL_LABELS: Record<Skill["level"], string> = {
@@ -44,15 +44,15 @@ export default function SkillTagger() {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="text-sm font-medium text-foreground/80">
+        <label className="text-sm font-medium text-foreground">
           Your Skills
           {skills.length > 0 && (
-            <span className="ml-2 text-xs text-text-dim font-normal">({skills.length})</span>
+            <span className="ml-2 text-xs text-text-muted font-normal">({skills.length})</span>
           )}
         </label>
         <button
           onClick={() => setShowAdd(!showAdd)}
-          className="text-[10px] text-cyan-glow hover:text-cyan-glow/80 transition-colors"
+          className="text-[10px] text-success hover:text-success/80 transition-colors"
         >
           {showAdd ? "Hide" : "+ Add manually"}
         </button>
@@ -67,15 +67,15 @@ export default function SkillTagger() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Add a skill (e.g. Python, React, SQL)"
-            className="flex-1 px-4 py-2 rounded-xl bg-surface-elevated border border-border-subtle
-                       text-sm text-foreground placeholder:text-text-dim
-                       focus:outline-none focus:border-emerald-glow/30 transition-colors"
+            className="flex-1 px-4 py-2 rounded-xl bg-surface-elevated border border-border-default
+                       text-sm text-foreground placeholder:text-text-muted
+                       focus:outline-none focus:border-primary-border transition-colors"
           />
           <button
             onClick={handleAdd}
             disabled={!input.trim()}
-            className="px-4 py-2 rounded-xl text-sm font-medium bg-emerald-glow/10 text-emerald-glow
-                       border border-emerald-glow/20 hover:bg-emerald-glow/15 transition-colors
+            className="px-4 py-2 rounded-xl text-sm font-medium bg-primary-light text-primary
+                       border border-primary-border hover:bg-primary-light transition-colors
                        disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Add
@@ -114,14 +114,14 @@ export default function SkillTagger() {
           ))}
         </div>
       ) : (
-        <p className="text-xs text-text-dim py-2">
+        <p className="text-xs text-text-muted py-2">
           Upload your resume above to auto-extract skills, or add them manually.
         </p>
       )}
 
       {skills.length > 0 && (
         <div className="flex items-center justify-between">
-          <p className="text-[10px] text-text-dim">
+          <p className="text-[10px] text-text-muted">
             Click level to cycle: Beginner → Intermediate → Advanced. Click × to remove.
           </p>
           {skills.length > 1 && (

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative py-32">
+    <section id="pricing" className="relative py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -12,16 +12,16 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-emerald-glow tracking-widest uppercase mb-4 block">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
             Pricing
           </span>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
             Completely <span className="gradient-text">Free</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-text-muted text-lg">
+          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
             No credit card. No trial. No catch. Everything runs in your browser
             on free-tier services.
           </p>
@@ -35,18 +35,18 @@ export default function Pricing() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="animated-border rounded-2xl p-8">
-              <div className="text-sm text-emerald-glow font-mono mb-4">
+            <div className="rounded-2xl p-8 bg-white border-2 border-primary/30 shadow-md">
+              <div className="text-sm text-primary font-mono mb-4">
                 Free Forever
               </div>
               <div
-                className="text-5xl font-bold mb-1"
+                className="text-5xl font-bold mb-1 text-foreground"
                 style={{ fontFamily: "var(--font-cabinet)" }}
               >
                 $0
-                <span className="text-lg text-text-dim font-normal">/mo</span>
+                <span className="text-lg text-text-muted font-normal">/mo</span>
               </div>
-              <p className="text-sm text-text-muted mb-8">
+              <p className="text-sm text-text-secondary mb-8">
                 Everything you need to prepare
               </p>
 
@@ -63,9 +63,9 @@ export default function Pricing() {
                   "Progress tracking",
                   "50+ practice problems",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-foreground/80">
+                  <li key={item} className="flex items-center gap-2 text-sm text-foreground">
                     <svg
-                      className="w-4 h-4 text-emerald-glow flex-shrink-0"
+                      className="w-4 h-4 text-success flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -84,9 +84,9 @@ export default function Pricing() {
 
               <a
                 href="/dashboard"
-                className="block w-full py-3 rounded-xl text-center font-semibold text-background
-                           bg-gradient-to-r from-emerald-glow to-emerald-mid
-                           hover:shadow-[0_0_30px_rgba(0,255,136,0.25)] transition-all duration-500"
+                className="block w-full py-3 rounded-xl text-center font-semibold text-white
+                           bg-primary hover:bg-primary/90
+                           hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] transition-all duration-500"
               >
                 Get Started Free
               </a>
@@ -101,18 +101,18 @@ export default function Pricing() {
             transition={{ delay: 0.1 }}
             className="relative"
           >
-            <div className="rounded-2xl p-8 bg-surface-elevated border border-border-subtle">
-              <div className="text-sm text-text-dim font-mono mb-4">
+            <div className="rounded-2xl p-8 bg-white border border-border-default shadow-sm">
+              <div className="text-sm text-text-muted font-mono mb-4">
                 Pro (Coming Soon)
               </div>
               <div
-                className="text-5xl font-bold text-text-dim mb-1"
+                className="text-5xl font-bold text-text-muted mb-1"
                 style={{ fontFamily: "var(--font-cabinet)" }}
               >
                 $?
                 <span className="text-lg font-normal">/mo</span>
               </div>
-              <p className="text-sm text-text-dim mb-8">AI-powered features</p>
+              <p className="text-sm text-text-muted mb-8">AI-powered features</p>
 
               <ul className="space-y-3 mb-8">
                 {[
@@ -127,9 +127,9 @@ export default function Pricing() {
                   "Mock interview mode",
                   "Priority support",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-text-dim">
+                  <li key={item} className="flex items-center gap-2 text-sm text-text-muted">
                     <svg
-                      className="w-4 h-4 text-text-dim/50 flex-shrink-0"
+                      className="w-4 h-4 text-text-muted/50 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -148,8 +148,8 @@ export default function Pricing() {
 
               <button
                 disabled
-                className="block w-full py-3 rounded-xl text-center font-medium text-text-dim
-                           border border-border-subtle cursor-not-allowed"
+                className="block w-full py-3 rounded-xl text-center font-medium text-text-muted
+                           border border-border-default cursor-not-allowed"
               >
                 Coming Soon
               </button>

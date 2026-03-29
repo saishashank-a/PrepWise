@@ -26,7 +26,7 @@ export default function LanguageSelector({ allowedLanguages, onLanguageChange }:
 
   if (allowedLanguages.length === 1) {
     return (
-      <span className="px-3 py-1.5 rounded-lg text-xs font-medium text-emerald-glow bg-emerald-glow/10 border border-emerald-glow/20">
+      <span className="px-3 py-1.5 rounded-lg text-xs font-medium text-primary bg-primary-light border border-primary-border">
         {LANGUAGE_LABELS[allowedLanguages[0]]}
       </span>
     );
@@ -36,8 +36,8 @@ export default function LanguageSelector({ allowedLanguages, onLanguageChange }:
     <select
       value={language}
       onChange={handleChange}
-      className="px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-elevated border border-border-subtle
-                 text-text-muted focus:outline-none focus:border-emerald-glow/30 transition-colors cursor-pointer"
+      className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-border-default
+                 text-text-secondary focus:outline-none focus:border-primary-border transition-colors cursor-pointer"
     >
       {allowedLanguages.map((lang) => (
         <option key={lang} value={lang} className="bg-surface text-foreground">

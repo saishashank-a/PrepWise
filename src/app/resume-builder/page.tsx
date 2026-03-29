@@ -26,37 +26,37 @@ export default function ResumeBuilderPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-40 glass">
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-border-default">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
           <a href="/" className="flex items-center gap-2.5 group">
             <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-emerald-glow/20 rounded-lg blur-md" />
-              <div className="relative w-full h-full bg-surface-elevated rounded-lg border border-emerald-glow/20 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-emerald-glow">
+              <div className="absolute inset-0 bg-primary-light rounded-lg blur-md" />
+              <div className="relative w-full h-full bg-white rounded-lg border border-primary-border flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary">
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
                 </svg>
               </div>
             </div>
             <span className="text-lg font-bold tracking-tight" style={{ fontFamily: "var(--font-cabinet)" }}>
-              Prep<span className="text-emerald-glow">Wise</span>
+              Prep<span className="text-primary">Wise</span>
             </span>
           </a>
 
           <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto">
-            <div className="flex items-center gap-1 bg-surface-elevated rounded-xl border border-border-subtle p-1">
+            <div className="flex items-center gap-1 bg-white rounded-xl border border-border-default p-1">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                     activeTab === tab.id
-                      ? "bg-emerald-glow/10 text-emerald-glow border border-emerald-glow/20"
-                      : "text-text-muted hover:text-foreground"
+                      ? "bg-primary-light text-primary border border-primary-border"
+                      : "text-text-secondary hover:text-foreground"
                   }`}
                 >
                   {tab.label}
                   {tab.count !== undefined && tab.count > 0 && (
-                    <span className="ml-1.5 text-[10px] bg-emerald-glow/20 text-emerald-glow px-1.5 py-0.5 rounded-full">
+                    <span className="ml-1.5 text-[10px] bg-primary-light text-primary px-1.5 py-0.5 rounded-full">
                       {tab.count}
                     </span>
                   )}
@@ -65,8 +65,8 @@ export default function ResumeBuilderPage() {
             </div>
             <a
               href="/dashboard"
-              className="px-3 py-2 rounded-lg text-xs font-medium text-cyan-glow bg-cyan-glow/10
-                         border border-cyan-glow/20 hover:bg-cyan-glow/15 transition-colors"
+              className="px-3 py-2 rounded-lg text-xs font-medium text-success bg-success-light
+                         border border-success-border hover:bg-success-light transition-colors"
             >
               Dashboard
             </a>
