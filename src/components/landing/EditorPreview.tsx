@@ -88,11 +88,11 @@ export default function EditorPreview() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
-            Write. Run. <span className="gradient-text">Verify.</span>
+            Practice Makes <span className="gradient-text">Perfect.</span>
           </h2>
           <p className="max-w-2xl mx-auto text-slate-600 text-lg">
-            Full-featured code editor with in-browser execution. No setup, no
-            installs — just open and code.
+            Full-featured code editor with in-browser execution — part of your
+            end-to-end interview prep workflow. No setup, no installs.
           </p>
         </motion.div>
 

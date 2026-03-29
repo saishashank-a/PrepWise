@@ -47,20 +47,19 @@ export default function Pricing() {
                 <span className="text-lg text-slate-500 font-normal">/mo</span>
               </div>
               <p className="text-sm text-slate-600 mb-8">
-                Everything you need to prepare
+                Everything you need to land your next role
               </p>
 
               <ul className="space-y-3 mb-8">
                 {[
-                  "Resume upload & parsing",
-                  "Job description analysis",
-                  "Gap analysis view",
+                  "Resume upload & ATS scoring",
+                  "AI resume tailoring (with API key)",
+                  "PDF & DOCX export",
+                  "Gap analysis",
+                  "Application tracker",
                   "Study plan builder",
-                  "Monaco code editor",
-                  "Python, JS, SQL execution",
-                  "Java via JDoodle (200/day)",
+                  "Code editor with execution",
                   "Auto-graded test cases",
-                  "Progress tracking",
                   "50+ practice problems",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
@@ -112,19 +111,16 @@ export default function Pricing() {
                 $?
                 <span className="text-lg font-normal">/mo</span>
               </div>
-              <p className="text-sm text-slate-400 mb-8">AI-powered features</p>
+              <p className="text-sm text-slate-400 mb-8">Advanced AI features</p>
 
               <ul className="space-y-3 mb-8">
                 {[
                   "Everything in Free",
-                  "AI resume analysis",
-                  "AI gap detection",
-                  "AI-generated study plans",
-                  "AI code evaluation",
-                  "Re-explanation on failure",
-                  "Behavioral prep",
-                  "System design practice",
-                  "Mock interview mode",
+                  "Advanced AI analysis",
+                  "Unlimited AI generations",
+                  "Cover letter generation",
+                  "LinkedIn optimization",
+                  "Mock interviews",
                   "Priority support",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-slate-400">

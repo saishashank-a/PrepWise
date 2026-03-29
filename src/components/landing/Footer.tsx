@@ -17,11 +17,11 @@ export default function Footer() {
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-foreground"
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
-            Ready to <span className="gradient-text">Ace Your Interview</span>?
+            Ready to <span className="gradient-text">Land Your Next Role</span>?
           </h2>
           <p className="text-slate-500 mb-8 max-w-xl mx-auto">
-            Start practicing now. Upload your resume, paste a job description,
-            and begin your personalized preparation journey.
+            Upload your resume, check your ATS score, tailor for the role, and
+            prep for the interview — all in one place, completely free.
           </p>
           <a
             href="/dashboard"

@@ -31,7 +31,7 @@ export default function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
           <span className="text-xs font-medium text-slate-600 tracking-wide uppercase">
-            Free & Open Source
+            Your Job Search Companion
           </span>
         </motion.div>
 
@@ -43,9 +43,9 @@ export default function Hero() {
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] tracking-tight mb-6 text-foreground"
           style={{ fontFamily: "var(--font-cabinet)" }}
         >
-          <span className="block">Ace Your Next</span>
+          <span className="block">Land Your Next</span>
           <span className="block gradient-text glow-text">
-            Technical Interview
+            Role, Faster
           </span>
         </motion.h1>
 
@@ -56,12 +56,11 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 leading-relaxed mb-10"
         >
-          Upload your resume. Paste the job description. Get a personalized
-          study plan with in-browser coding practice.{" "}
+          Build ATS-optimized resumes, track your applications, and prepare for
+          interviews — all in one place.{" "}
           <span className="text-foreground">
-            Python, SQL, JavaScript, Java
-          </span>{" "}
-          — all running in your browser.
+            Free, private, runs in your browser.
+          </span>
         </motion.p>
 
         {/* CTA Buttons */}
@@ -78,7 +77,7 @@ export default function Hero() {
                        hover:shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-all duration-500"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Start Preparing
+              Get Started Free
               <svg
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -100,7 +99,7 @@ export default function Hero() {
                        border border-gray-300 hover:border-primary/40
                        hover:text-foreground transition-all duration-300"
           >
-            See the Editor
+            See How It Works
           </a>
         </motion.div>
 

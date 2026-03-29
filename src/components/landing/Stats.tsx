@@ -52,10 +52,10 @@ function AnimatedNumber({
 
 const stats = [
   {
-    value: 4,
+    value: 2,
     suffix: "",
-    label: "Languages",
-    description: "Python, JS, SQL, Java",
+    label: "Resume Formats",
+    description: "PDF & DOCX export",
     prefix: "",
   },
   {
@@ -68,15 +68,15 @@ const stats = [
   {
     value: 100,
     suffix: "%",
-    label: "In-Browser",
-    description: "No server needed",
+    label: "ATS Score Check",
+    description: "Instant feedback",
     prefix: "",
   },
   {
     value: 50,
     suffix: "+",
     label: "Practice Problems",
-    description: "With auto-grading",
+    description: "Resume to interview",
     prefix: "",
   },
 ];

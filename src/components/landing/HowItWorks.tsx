@@ -7,7 +7,7 @@ const steps = [
     number: "01",
     title: "Upload Your Resume",
     description:
-      "Drop your PDF or DOCX. Our in-browser parser extracts the text instantly. Tag your skills with proficiency levels.",
+      "Drop your PDF or DOCX. Our in-browser parser extracts your skills instantly and runs an ATS compatibility check — no data leaves your machine.",
     visual: (
       <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
         <div className="flex items-center gap-3 mb-3">
@@ -33,9 +33,9 @@ const steps = [
   },
   {
     number: "02",
-    title: "Paste the Job Description",
+    title: "Check Your ATS Score",
     description:
-      "Copy any job posting. We'll help you identify the required skills and compare them against your resume.",
+      "Paste any job description and instantly see your ATS compatibility score, missing keywords, and formatting issues. Know exactly where you stand.",
     visual: (
       <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
         <div className="text-[10px] font-mono text-slate-600 leading-relaxed">
@@ -57,39 +57,45 @@ const steps = [
   },
   {
     number: "03",
-    title: "Build Your Study Plan",
+    title: "Tailor & Apply",
     description:
-      "Create a prioritized learning path. Pick from templates or build your own. Track progress as you go.",
+      "Generate a role-specific resume tailored to the job description. Download as PDF or DOCX and track your application status.",
     visual: (
       <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
-        <div className="space-y-2">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-6 h-6 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center">
+            <svg className="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+          </div>
+          <span className="text-[10px] font-medium text-foreground">AI-Tailored Resume</span>
+        </div>
+        <div className="space-y-1.5">
           {[
-            { topic: "System Design", status: "In Progress", pct: 40 },
-            { topic: "Kubernetes Basics", status: "Not Started", pct: 0 },
-            { topic: "GraphQL", status: "Not Started", pct: 0 },
+            { label: "Keyword match", pct: 92 },
+            { label: "ATS score", pct: 88 },
           ].map((item) => (
-            <div key={item.topic} className="flex items-center gap-3">
-              <div className="flex-1">
-                <div className="text-[10px] text-foreground mb-0.5">{item.topic}</div>
-                <div className="h-1 rounded-full bg-slate-100 overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-primary/60"
-                    style={{ width: `${item.pct}%` }}
-                  />
-                </div>
+            <div key={item.label} className="flex items-center gap-2">
+              <div className="text-[9px] text-slate-500 w-20 shrink-0">{item.label}</div>
+              <div className="flex-1 h-1 rounded-full bg-slate-100 overflow-hidden">
+                <div className="h-full rounded-full bg-success/60" style={{ width: `${item.pct}%` }} />
               </div>
-              <span className="text-[9px] text-slate-400 whitespace-nowrap">{item.status}</span>
+              <span className="text-[9px] text-success">{item.pct}%</span>
             </div>
           ))}
+        </div>
+        <div className="absolute bottom-3 right-3 flex gap-1.5">
+          <span className="px-1.5 py-0.5 text-[9px] rounded bg-primary/10 text-primary border border-primary/20">PDF</span>
+          <span className="px-1.5 py-0.5 text-[9px] rounded bg-emerald-50 text-success border border-emerald-100">DOCX</span>
         </div>
       </div>
     ),
   },
   {
     number: "04",
-    title: "Practice & Verify",
+    title: "Prepare & Practice",
     description:
-      "Solve problems in the code editor. Run your code, check test cases, and build real confidence.",
+      "Build a study plan for your interviews. Practice coding, SQL, and system design — all in your browser. Show up to every interview ready.",
     visual: (
       <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
         <div className="flex items-center gap-2 mb-2">
@@ -134,7 +140,7 @@ export default function HowItWorks() {
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
             Four Steps to{" "}
-            <span className="gradient-text">Interview Ready</span>
+            <span className="gradient-text">Your Next Role</span>
           </h2>
         </motion.div>
 

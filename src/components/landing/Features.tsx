@@ -20,9 +20,9 @@ const features = [
         <path d="M10 9H8" />
       </svg>
     ),
-    title: "Resume Analysis",
+    title: "ATS Resume Scanner",
     description:
-      "Upload your PDF or DOCX resume. Our in-browser parser extracts your skills instantly — no server uploads, no data leaves your machine.",
+      "Check your resume's ATS compatibility score instantly. Get keyword match analysis, formatting feedback, and actionable improvements — all in your browser.",
     iconBg: "bg-blue-50",
     iconColor: "text-primary",
     borderColor: "border-blue-100",
@@ -46,7 +46,7 @@ const features = [
     ),
     title: "Gap Analysis",
     description:
-      "Paste any job description. See a side-by-side comparison of what you know versus what's required. Identify exactly where to focus.",
+      "See exactly which skills you're missing for a role. Compare your resume against any job description instantly and know where to focus.",
     iconBg: "bg-emerald-50",
     iconColor: "text-success",
     borderColor: "border-emerald-100",
@@ -66,9 +66,9 @@ const features = [
         <path d="m9 9.5 2 2 4-4" />
       </svg>
     ),
-    title: "Smart Study Plans",
+    title: "AI Resume Tailoring",
     description:
-      "Build a prioritized learning path with topics, difficulty levels, and progress tracking. Pre-built templates for DSA, SQL, System Design.",
+      "Generate role-specific resumes tailored to each job description. Edit section-by-section or get a complete rewrite. Export as PDF or DOCX.",
     iconBg: "bg-blue-50",
     iconColor: "text-primary",
     borderColor: "border-blue-100",
@@ -89,9 +89,9 @@ const features = [
         <line x1="12" y1="2" x2="12" y2="22" opacity="0.3" />
       </svg>
     ),
-    title: "In-Browser Code Editor",
+    title: "Application Tracker",
     description:
-      "Monaco Editor with syntax highlighting, autocomplete, and real execution. Python via Pyodide, SQL via PGlite, JS sandboxed, Java via JDoodle.",
+      "Track every application in a Kanban board. Monitor statuses from applied to offered. Never lose track of where you stand. (Coming Soon)",
     iconBg: "bg-emerald-50",
     iconColor: "text-success",
     borderColor: "border-emerald-100",
@@ -111,9 +111,9 @@ const features = [
         <path d="m9 12 2 2 4-4" />
       </svg>
     ),
-    title: "Auto-Grading",
+    title: "In-Browser Code Practice",
     description:
-      "Write code, hit run, get instant feedback. Test cases validate your output automatically. Track every submission and build confidence.",
+      "Full code editor with Python, SQL, and JavaScript execution. No setup needed — write code, run it, get instant feedback right in your browser.",
     iconBg: "bg-blue-50",
     iconColor: "text-primary",
     borderColor: "border-blue-100",
@@ -139,9 +139,9 @@ const features = [
         <path d="m4.9 4.9 2.9 2.9" />
       </svg>
     ),
-    title: "AI-Ready Architecture",
+    title: "AI-Powered Prep",
     description:
-      "Pluggable AI layer for when you're ready. Swap in Gemini, Claude, or any LLM for smart resume parsing, plan generation, and code evaluation.",
+      "Get AI feedback on your code, generate personalized study plans, and practice with an AI interview coach. Bring your own API key.",
     iconBg: "bg-rose-50",
     iconColor: "text-rose-500",
     borderColor: "border-rose-100",
@@ -171,11 +171,11 @@ export default function Features() {
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
             Everything You Need to{" "}
-            <span className="gradient-text">Prepare</span>
+            <span className="gradient-text">Get Hired</span>
           </h2>
           <p className="max-w-2xl mx-auto text-slate-600 text-lg">
-            From resume analysis to in-browser coding practice — a complete
-            interview prep workflow that runs entirely in your browser.
+            From ATS-optimized resumes to in-browser interview practice — a
+            complete job search workflow that runs entirely in your browser.
           </p>
         </motion.div>
 
