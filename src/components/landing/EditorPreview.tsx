@@ -90,7 +90,7 @@ export default function EditorPreview() {
           >
             Write. Run. <span className="gradient-text">Verify.</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
+          <p className="max-w-2xl mx-auto text-slate-600 text-lg">
             Full-featured code editor with in-browser execution. No setup, no
             installs — just open and code.
           </p>
@@ -108,7 +108,7 @@ export default function EditorPreview() {
           {/* Subtle glow behind editor */}
           <div className="absolute -inset-4 bg-primary/[0.03] rounded-3xl blur-2xl" />
 
-          <div className="relative rounded-2xl overflow-hidden border border-border-default shadow-xl">
+          <div className="relative rounded-2xl overflow-hidden border border-gray-300 shadow-xl">
             {/* Title bar — keep dark for authentic IDE feel */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#1e1e1e] border-b border-white/[0.06]">
               <div className="flex items-center gap-2">

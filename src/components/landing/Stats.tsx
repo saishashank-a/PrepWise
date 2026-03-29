@@ -83,10 +83,10 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative py-24 bg-surface">
+    <section className="relative py-24 bg-slate-50">
       {/* Top line */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-border-default to-transparent mb-16" />
+        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent mb-16" />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {stats.map((stat, i) => (
@@ -108,15 +108,15 @@ export default function Stats() {
                   prefix={stat.prefix}
                 />
               </div>
-              <div className="text-sm font-medium text-foreground mb-1">
+              <div className="text-sm font-semibold text-slate-800 mb-1">
                 {stat.label}
               </div>
-              <div className="text-xs text-text-muted">{stat.description}</div>
+              <div className="text-xs text-slate-500">{stat.description}</div>
             </motion.div>
           ))}
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-border-default to-transparent mt-16" />
+        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent mt-16" />
       </div>
     </section>
   );

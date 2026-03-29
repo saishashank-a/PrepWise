@@ -27,10 +27,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-border-default backdrop-blur-sm mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-gray-200 backdrop-blur-sm mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-          <span className="text-xs font-medium text-text-secondary tracking-wide uppercase">
+          <span className="text-xs font-medium text-slate-600 tracking-wide uppercase">
             Free & Open Source
           </span>
         </motion.div>
@@ -54,7 +54,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-text-secondary leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 leading-relaxed mb-10"
         >
           Upload your resume. Paste the job description. Get a personalized
           study plan with in-browser coding practice.{" "}
@@ -96,8 +96,8 @@ export default function Hero() {
           </a>
           <a
             href="#editor"
-            className="px-8 py-4 rounded-xl font-medium text-text-secondary
-                       border border-border-default hover:border-primary/40
+            className="px-8 py-4 rounded-xl font-medium text-slate-600
+                       border border-gray-300 hover:border-primary/40
                        hover:text-foreground transition-all duration-300"
           >
             See the Editor
@@ -121,7 +121,7 @@ export default function Hero() {
           ].map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 text-xs font-mono text-text-muted border border-border-default rounded-md bg-surface"
+              className="px-3 py-1 text-xs font-mono text-slate-500 border border-gray-200 rounded-md bg-slate-50"
             >
               {tech}
             </span>

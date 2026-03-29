@@ -21,7 +21,7 @@ export default function Pricing() {
           >
             Completely <span className="gradient-text">Free</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
+          <p className="max-w-2xl mx-auto text-slate-600 text-lg">
             No credit card. No trial. No catch. Everything runs in your browser
             on free-tier services.
           </p>
@@ -44,9 +44,9 @@ export default function Pricing() {
                 style={{ fontFamily: "var(--font-cabinet)" }}
               >
                 $0
-                <span className="text-lg text-text-muted font-normal">/mo</span>
+                <span className="text-lg text-slate-500 font-normal">/mo</span>
               </div>
-              <p className="text-sm text-text-secondary mb-8">
+              <p className="text-sm text-slate-600 mb-8">
                 Everything you need to prepare
               </p>
 
@@ -63,7 +63,7 @@ export default function Pricing() {
                   "Progress tracking",
                   "50+ practice problems",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-foreground">
+                  <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
                     <svg
                       className="w-4 h-4 text-success flex-shrink-0"
                       fill="none"
@@ -101,18 +101,18 @@ export default function Pricing() {
             transition={{ delay: 0.1 }}
             className="relative"
           >
-            <div className="rounded-2xl p-8 bg-white border border-border-default shadow-sm">
-              <div className="text-sm text-text-muted font-mono mb-4">
+            <div className="rounded-2xl p-8 bg-white border border-gray-200 shadow-sm">
+              <div className="text-sm text-slate-400 font-mono mb-4">
                 Pro (Coming Soon)
               </div>
               <div
-                className="text-5xl font-bold text-text-muted mb-1"
+                className="text-5xl font-bold text-slate-400 mb-1"
                 style={{ fontFamily: "var(--font-cabinet)" }}
               >
                 $?
                 <span className="text-lg font-normal">/mo</span>
               </div>
-              <p className="text-sm text-text-muted mb-8">AI-powered features</p>
+              <p className="text-sm text-slate-400 mb-8">AI-powered features</p>
 
               <ul className="space-y-3 mb-8">
                 {[
@@ -127,9 +127,9 @@ export default function Pricing() {
                   "Mock interview mode",
                   "Priority support",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-text-muted">
+                  <li key={item} className="flex items-center gap-2 text-sm text-slate-400">
                     <svg
-                      className="w-4 h-4 text-text-muted/50 flex-shrink-0"
+                      className="w-4 h-4 text-slate-300 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -148,8 +148,8 @@ export default function Pricing() {
 
               <button
                 disabled
-                className="block w-full py-3 rounded-xl text-center font-medium text-text-muted
-                           border border-border-default cursor-not-allowed"
+                className="block w-full py-3 rounded-xl text-center font-medium text-slate-400
+                           border border-gray-200 cursor-not-allowed bg-slate-50"
               >
                 Coming Soon
               </button>

@@ -29,7 +29,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-border-default py-3"
+            ? "bg-white/80 backdrop-blur-xl border-b border-gray-200 py-3"
             : "bg-transparent py-5"
         }`}
       >
@@ -67,7 +67,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm text-text-secondary hover:text-foreground transition-colors rounded-lg hover:bg-slate-100"
+                className="px-4 py-2 text-sm text-slate-600 hover:text-foreground transition-colors rounded-lg hover:bg-slate-100"
               >
                 {link.label}
               </a>
@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <a
               href="#"
-              className="px-4 py-2 text-sm text-text-secondary hover:text-foreground transition-colors"
+              className="px-4 py-2 text-sm text-slate-600 hover:text-foreground transition-colors"
             >
               Sign In
             </a>
@@ -125,7 +125,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-light text-text-secondary hover:text-foreground transition-colors"
+                  className="text-2xl font-light text-slate-600 hover:text-foreground transition-colors"
                   style={{ fontFamily: "var(--font-cabinet)" }}
                 >
                   {link.label}

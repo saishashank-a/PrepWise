@@ -23,9 +23,9 @@ const features = [
     title: "Resume Analysis",
     description:
       "Upload your PDF or DOCX resume. Our in-browser parser extracts your skills instantly — no server uploads, no data leaves your machine.",
-    gradient: "from-primary/10 to-success/5",
+    iconBg: "bg-blue-50",
     iconColor: "text-primary",
-    borderColor: "border-primary/10",
+    borderColor: "border-blue-100",
     hoverGlow: "bg-primary/[0.04]",
   },
   {
@@ -47,9 +47,9 @@ const features = [
     title: "Gap Analysis",
     description:
       "Paste any job description. See a side-by-side comparison of what you know versus what's required. Identify exactly where to focus.",
-    gradient: "from-success/10 to-primary/5",
+    iconBg: "bg-emerald-50",
     iconColor: "text-success",
-    borderColor: "border-success/10",
+    borderColor: "border-emerald-100",
     hoverGlow: "bg-success/[0.04]",
   },
   {
@@ -69,9 +69,9 @@ const features = [
     title: "Smart Study Plans",
     description:
       "Build a prioritized learning path with topics, difficulty levels, and progress tracking. Pre-built templates for DSA, SQL, System Design.",
-    gradient: "from-primary/10 to-primary/5",
+    iconBg: "bg-blue-50",
     iconColor: "text-primary",
-    borderColor: "border-primary/10",
+    borderColor: "border-blue-100",
     hoverGlow: "bg-primary/[0.04]",
   },
   {
@@ -92,9 +92,9 @@ const features = [
     title: "In-Browser Code Editor",
     description:
       "Monaco Editor with syntax highlighting, autocomplete, and real execution. Python via Pyodide, SQL via PGlite, JS sandboxed, Java via JDoodle.",
-    gradient: "from-success/10 to-primary/5",
+    iconBg: "bg-emerald-50",
     iconColor: "text-success",
-    borderColor: "border-success/10",
+    borderColor: "border-emerald-100",
     hoverGlow: "bg-success/[0.04]",
   },
   {
@@ -114,9 +114,9 @@ const features = [
     title: "Auto-Grading",
     description:
       "Write code, hit run, get instant feedback. Test cases validate your output automatically. Track every submission and build confidence.",
-    gradient: "from-primary/10 to-success/5",
+    iconBg: "bg-blue-50",
     iconColor: "text-primary",
-    borderColor: "border-primary/10",
+    borderColor: "border-blue-100",
     hoverGlow: "bg-primary/[0.04]",
   },
   {
@@ -142,10 +142,10 @@ const features = [
     title: "AI-Ready Architecture",
     description:
       "Pluggable AI layer for when you're ready. Swap in Gemini, Claude, or any LLM for smart resume parsing, plan generation, and code evaluation.",
-    gradient: "from-success/10 to-success/5",
-    iconColor: "text-success",
-    borderColor: "border-success/10",
-    hoverGlow: "bg-success/[0.04]",
+    iconBg: "bg-rose-50",
+    iconColor: "text-rose-500",
+    borderColor: "border-rose-100",
+    hoverGlow: "bg-rose-50/50",
   },
 ];
 
@@ -173,7 +173,7 @@ export default function Features() {
             Everything You Need to{" "}
             <span className="gradient-text">Prepare</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
+          <p className="max-w-2xl mx-auto text-slate-600 text-lg">
             From resume analysis to in-browser coding practice — a complete
             interview prep workflow that runs entirely in your browser.
           </p>
@@ -192,7 +192,7 @@ export default function Features() {
             >
               <div
                 className="relative h-full p-7 rounded-2xl bg-white
-                           border border-border-default hover:border-primary/30
+                           border border-gray-200 hover:border-primary/30
                            shadow-sm hover:shadow-md
                            transition-all duration-500 overflow-hidden"
               >
@@ -204,7 +204,7 @@ export default function Features() {
 
                 {/* Icon */}
                 <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.gradient}
+                  className={`w-12 h-12 rounded-xl ${feature.iconBg}
                               flex items-center justify-center ${feature.iconColor} mb-5
                               border ${feature.borderColor}`}
                 >
@@ -215,7 +215,7 @@ export default function Features() {
                 <h3 className="text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {feature.description}
                 </p>
               </div>

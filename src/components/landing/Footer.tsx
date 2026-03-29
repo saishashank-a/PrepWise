@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative py-20 border-t border-border-default bg-surface">
+    <footer className="relative py-20 border-t border-gray-200 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* CTA Section */}
         <motion.div
@@ -19,7 +19,7 @@ export default function Footer() {
           >
             Ready to <span className="gradient-text">Ace Your Interview</span>?
           </h2>
-          <p className="text-text-secondary mb-8 max-w-xl mx-auto">
+          <p className="text-slate-500 mb-8 max-w-xl mx-auto">
             Start practicing now. Upload your resume, paste a job description,
             and begin your personalized preparation journey.
           </p>
@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Features", "Editor", "Study Plans", "Practice"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -65,7 +65,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Documentation", "Blog", "Changelog", "Roadmap"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -77,7 +77,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["GitHub", "Discord", "Twitter", "Contribute"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -89,7 +89,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Privacy", "Terms", "Cookies"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -99,7 +99,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border-default">
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-gray-200">
           <div className="flex items-center gap-2.5 mb-4 md:mb-0">
             <div className="w-7 h-7 bg-white rounded-md border border-primary/20 flex items-center justify-center">
               <svg
@@ -119,7 +119,7 @@ export default function Footer() {
               Prep<span className="text-primary">Wise</span>
             </span>
           </div>
-          <p className="text-xs text-text-muted">
+          <p className="text-xs text-slate-500">
             Built with Next.js, Three.js, and WebAssembly. Open source &
             free forever.
           </p>

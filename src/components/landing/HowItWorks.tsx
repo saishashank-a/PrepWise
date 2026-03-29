@@ -9,7 +9,7 @@ const steps = [
     description:
       "Drop your PDF or DOCX. Our in-browser parser extracts the text instantly. Tag your skills with proficiency levels.",
     visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-border-default overflow-hidden p-4 shadow-sm">
+      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
             <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -18,7 +18,7 @@ const steps = [
           </div>
           <div>
             <div className="text-xs font-medium text-foreground">resume_2024.pdf</div>
-            <div className="text-[10px] text-text-muted">245 KB</div>
+            <div className="text-[10px] text-slate-400">245 KB</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -37,8 +37,8 @@ const steps = [
     description:
       "Copy any job posting. We'll help you identify the required skills and compare them against your resume.",
     visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-border-default overflow-hidden p-4 shadow-sm">
-        <div className="text-[10px] font-mono text-text-secondary leading-relaxed">
+      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
+        <div className="text-[10px] font-mono text-slate-600 leading-relaxed">
           <span className="text-foreground">Senior Software Engineer</span>
           <br />
           Requirements: Python, TypeScript,{" "}
@@ -48,7 +48,7 @@ const steps = [
           <span className="bg-primary/10 text-primary px-0.5 rounded">SQL</span>,{" "}
           <span className="bg-red-50 text-red-500 px-0.5 rounded">System Design</span>
         </div>
-        <div className="absolute bottom-3 right-3 text-[10px] text-text-muted">
+        <div className="absolute bottom-3 right-3 text-[10px] text-slate-400">
           <span className="text-primary">4</span> match &middot;{" "}
           <span className="text-red-500">3</span> gaps
         </div>
@@ -61,7 +61,7 @@ const steps = [
     description:
       "Create a prioritized learning path. Pick from templates or build your own. Track progress as you go.",
     visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-border-default overflow-hidden p-4 shadow-sm">
+      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
         <div className="space-y-2">
           {[
             { topic: "System Design", status: "In Progress", pct: 40 },
@@ -78,7 +78,7 @@ const steps = [
                   />
                 </div>
               </div>
-              <span className="text-[9px] text-text-muted whitespace-nowrap">{item.status}</span>
+              <span className="text-[9px] text-slate-400 whitespace-nowrap">{item.status}</span>
             </div>
           ))}
         </div>
@@ -91,7 +91,7 @@ const steps = [
     description:
       "Solve problems in the code editor. Run your code, check test cases, and build real confidence.",
     visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-border-default overflow-hidden p-4 shadow-sm">
+      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
         <div className="flex items-center gap-2 mb-2">
           <div className="text-[10px] font-mono text-success">4/4 passed</div>
           <div className="flex-1 h-1 rounded-full bg-slate-100 overflow-hidden">
@@ -117,7 +117,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-32 bg-white">
+    <section id="how-it-works" className="relative py-32 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <motion.div
@@ -141,7 +141,7 @@ export default function HowItWorks() {
         {/* Steps */}
         <div className="relative">
           {/* Connecting line */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/20 via-primary/10 to-transparent" />
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/30 via-primary/20 to-transparent" />
 
           <div className="space-y-16 lg:space-y-24">
             {steps.map((step, i) => (
@@ -158,7 +158,7 @@ export default function HowItWorks() {
                 {/* Text */}
                 <div className="flex-1 text-center lg:text-left">
                   <div
-                    className="text-6xl font-bold text-primary/10 mb-2"
+                    className="text-6xl font-bold text-primary/20 mb-2 select-none"
                     style={{ fontFamily: "var(--font-cabinet)" }}
                   >
                     {step.number}
@@ -169,7 +169,7 @@ export default function HowItWorks() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-text-secondary leading-relaxed max-w-md">
+                  <p className="text-slate-600 leading-relaxed max-w-md">
                     {step.description}
                   </p>
                 </div>
