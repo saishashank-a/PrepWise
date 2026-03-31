@@ -30,6 +30,7 @@ export default function PracticePage() {
   const {
     code,
     language,
+    testResults,
     setCode,
     setLanguage,
     setOutput,
@@ -133,10 +134,11 @@ export default function PracticePage() {
     (lang: typeof language) => {
       if (!assignment) return;
       saveDraft(questionId);
+      setLanguage(lang);
       const starter = assignment.starterCode[lang] || "";
       loadDraft(questionId, starter);
     },
-    [assignment, questionId, saveDraft, loadDraft],
+    [assignment, questionId, saveDraft, setLanguage, loadDraft],
   );
 
   if (!assignment) {
@@ -265,12 +267,12 @@ export default function PracticePage() {
               ) : (
                 <div className="space-y-3 h-full overflow-auto">
                   <TestResults />
-                  {useEditorStore.getState().testResults && (
+                  {testResults && (
                     <AIFeedback
                       code={code}
                       language={language}
                       problemDescription={assignment.description}
-                      testResults={useEditorStore.getState().testResults!}
+                      testResults={testResults}
                     />
                   )}
                 </div>

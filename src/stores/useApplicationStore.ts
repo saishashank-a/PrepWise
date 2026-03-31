@@ -66,6 +66,7 @@ export const useApplicationStore = create<ApplicationStore>((set, get) => ({
   },
 
   persist: () => {
+    if (typeof window === "undefined") return;
     const { applications } = get();
     localStorage.setItem("prepwise_applications", JSON.stringify(applications));
   },
