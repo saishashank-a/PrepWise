@@ -6,6 +6,7 @@ import ResumeUpload from "@/components/upload/ResumeUpload";
 import SkillTagger from "@/components/upload/SkillTagger";
 import JDInput from "@/components/upload/JDInput";
 import GapView from "@/components/upload/GapView";
+import AppLayout from "@/components/layout/AppLayout";
 
 type Tab = "resume" | "jd" | "gap";
 
@@ -33,80 +34,65 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-40 glass">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
-          <a href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-primary-light rounded-lg blur-md" />
-              <div className="relative w-full h-full bg-surface-elevated rounded-lg border border-primary-border flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
-                </svg>
-              </div>
-            </div>
-            <span className="text-lg font-bold tracking-tight" style={{ fontFamily: "var(--font-cabinet)" }}>
-              Prep<span className="text-primary">Wise</span>
-            </span>
-          </a>
-
-          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto">
-          <div className="flex items-center gap-1 bg-surface-elevated rounded-xl border border-border-default p-1">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
-                  activeTab === tab.id
-                    ? "bg-primary-light text-primary border border-primary-border"
-                    : "text-text-secondary hover:text-foreground"
-                }`}
-              >
-                {tab.label}
-                {tab.count !== undefined && tab.count > 0 && (
-                  <span className="ml-1.5 text-[10px] bg-primary-light text-primary px-1.5 py-0.5 rounded-full">
-                    {tab.count}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-          <a
-            href="/plan"
-            className="px-3 py-2 rounded-lg text-xs font-medium text-success bg-success-light
-                       border border-success-border hover:bg-success-light transition-colors"
+    <AppLayout>
+      <div className="p-8 md:p-10 max-w-5xl">
+        {/* Page header */}
+        <div className="mb-8">
+          <p className="text-[10px] font-mono uppercase tracking-widest text-[#474747] mb-2">
+            WORKSPACE
+          </p>
+          <h1
+            className="text-4xl md:text-5xl font-black tracking-tighter text-black"
+            style={{ fontFamily: "var(--font-display)" }}
           >
-            Study Plan
-          </a>
-          <a
-            href="/resume-builder"
-            className="px-3 py-2 rounded-lg text-xs font-medium text-primary bg-primary-light
-                       border border-primary-border hover:bg-primary-light transition-colors"
-          >
-            Resume Builder
-          </a>
-          </div>
+            Dashboard
+          </h1>
         </div>
-      </header>
 
-      {/* Content */}
-      <main className="max-w-5xl mx-auto px-6 py-10">
+        {/* Tab bar */}
+        <div className="bg-[#f2f4f3] rounded-xl p-1 inline-flex gap-1 mb-8">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                activeTab === tab.id
+                  ? "bg-black text-white"
+                  : "text-[#474747] hover:bg-[#e6e9e8]"
+              }`}
+            >
+              {tab.label}
+              {tab.count !== undefined && tab.count > 0 && (
+                <span
+                  className={`ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full ${
+                    activeTab === tab.id
+                      ? "bg-white/20 text-white"
+                      : "bg-black/10 text-[#474747]"
+                  }`}
+                >
+                  {tab.count}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Content */}
         {activeTab === "resume" && (
           <div className="space-y-8">
             <div>
-              <h1
-                className="text-2xl font-bold mb-2"
-                style={{ fontFamily: "var(--font-cabinet)" }}
+              <h2
+                className="text-2xl font-black tracking-tighter text-black mb-2"
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 Upload Your Resume
-              </h1>
-              <p className="text-sm text-text-secondary">
+              </h2>
+              <p className="text-sm text-[#474747]">
                 Drop your PDF or DOCX file. Everything is parsed in your browser — no data leaves your machine.
               </p>
             </div>
             <ResumeUpload />
-            <div className="h-px bg-gradient-to-r from-transparent via-primary-border to-transparent" />
+            <div className="h-px bg-black/[0.06]" />
             <SkillTagger />
           </div>
         )}
@@ -114,13 +100,13 @@ export default function DashboardPage() {
         {activeTab === "jd" && (
           <div className="space-y-8">
             <div>
-              <h1
-                className="text-2xl font-bold mb-2"
-                style={{ fontFamily: "var(--font-cabinet)" }}
+              <h2
+                className="text-2xl font-black tracking-tighter text-black mb-2"
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 Paste the Job Description
-              </h1>
-              <p className="text-sm text-text-secondary">
+              </h2>
+              <p className="text-sm text-[#474747]">
                 Copy the job posting and identify the required skills. We&apos;ll compare them against your resume.
               </p>
             </div>
@@ -131,20 +117,20 @@ export default function DashboardPage() {
         {activeTab === "gap" && (
           <div className="space-y-8">
             <div>
-              <h1
-                className="text-2xl font-bold mb-2"
-                style={{ fontFamily: "var(--font-cabinet)" }}
+              <h2
+                className="text-2xl font-black tracking-tighter text-black mb-2"
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 Gap Analysis
-              </h1>
-              <p className="text-sm text-text-secondary">
+              </h2>
+              <p className="text-sm text-[#474747]">
                 See how your skills stack up against what the job requires.
               </p>
             </div>
             <GapView />
           </div>
         )}
-      </main>
-    </div>
+      </div>
+    </AppLayout>
   );
 }
