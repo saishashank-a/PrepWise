@@ -2,21 +2,18 @@
 
 import type { Topic, TopicStatus } from "@/lib/types";
 
-const STATUS_CONFIG: Record<TopicStatus, { label: string; color: string; bg: string }> = {
+const STATUS_CONFIG: Record<TopicStatus, { label: string; color: string }> = {
   not_started: {
     label: "Not Started",
-    color: "text-text-muted",
-    bg: "bg-white border-border-default",
+    color: "text-[#aaa]",
   },
   in_progress: {
     label: "In Progress",
-    color: "text-yellow-600",
-    bg: "bg-yellow-50 border-yellow-200",
+    color: "text-[#474747]",
   },
   completed: {
     label: "Completed",
-    color: "text-primary",
-    bg: "bg-primary-light border-primary-border",
+    color: "text-[#191c1c]",
   },
 };
 
@@ -28,10 +25,10 @@ const TYPE_LABELS: Record<string, string> = {
   behavioral: "Behavioral",
 };
 
-const DIFFICULTY_CONFIG: Record<string, { label: string; color: string }> = {
-  easy: { label: "Easy", color: "text-primary bg-primary-light" },
-  medium: { label: "Medium", color: "text-yellow-600 bg-yellow-50" },
-  hard: { label: "Hard", color: "text-red-500 bg-red-50" },
+const DIFFICULTY_CONFIG: Record<string, { label: string }> = {
+  easy: { label: "Easy" },
+  medium: { label: "Medium" },
+  hard: { label: "Hard" },
 };
 
 interface TopicCardProps {
@@ -58,33 +55,33 @@ export default function TopicCard({
   const statuses: TopicStatus[] = ["not_started", "in_progress", "completed"];
 
   return (
-    <div className={`rounded-xl border p-4 transition-all ${status.bg}`}>
+    <div className="bg-white border border-black/[0.06] rounded-2xl p-5 hover:shadow-lg hover:shadow-black/5 transition-all duration-200 active:scale-[0.97]">
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs text-text-muted font-mono">#{index + 1}</span>
+            <span className="text-xs text-[#777] font-mono">#{index + 1}</span>
             <a
               href={`/learn/${topic.id}`}
-              className="text-sm font-semibold text-foreground truncate hover:text-primary transition-colors"
+              className="text-sm font-semibold text-[#191c1c] truncate hover:text-black transition-colors"
             >
               {topic.title}
             </a>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[10px] px-2 py-0.5 rounded-md bg-white border border-border-default text-text-secondary">
+            <span className="bg-[#e6e9e8] text-[#474747] text-[10px] uppercase tracking-widest px-2 py-0.5">
               {TYPE_LABELS[topic.type] || topic.type}
             </span>
-            <span className={`text-[10px] px-2 py-0.5 rounded-md ${difficulty.color}`}>
+            <span className="bg-[#eceeed] text-[#474747] text-[10px] uppercase tracking-widest px-2 py-0.5">
               {difficulty.label}
             </span>
             <select
               value={topic.status}
               onChange={(e) => onStatusChange(e.target.value as TopicStatus)}
-              className={`text-[10px] px-2 py-0.5 rounded-md border-0 cursor-pointer
+              className={`text-[10px] px-2 py-0.5 border-0 cursor-pointer
                          bg-transparent ${status.color} focus:outline-none`}
             >
               {statuses.map((s) => (
-                <option key={s} value={s} className="bg-surface text-foreground">
+                <option key={s} value={s} className="bg-white text-[#191c1c]">
                   {STATUS_CONFIG[s].label}
                 </option>
               ))}
@@ -96,7 +93,7 @@ export default function TopicCard({
           <button
             onClick={onMoveUp}
             disabled={index === 0}
-            className="p-1 rounded-md text-text-muted hover:text-foreground hover:bg-surface
+            className="p-1 rounded-md text-[#777] hover:text-[#191c1c] hover:bg-[#f2f4f3]
                        transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
             title="Move up"
           >
@@ -107,7 +104,7 @@ export default function TopicCard({
           <button
             onClick={onMoveDown}
             disabled={index === total - 1}
-            className="p-1 rounded-md text-text-muted hover:text-foreground hover:bg-surface
+            className="p-1 rounded-md text-[#777] hover:text-[#191c1c] hover:bg-[#f2f4f3]
                        transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
             title="Move down"
           >
@@ -117,7 +114,7 @@ export default function TopicCard({
           </button>
           <button
             onClick={onRemove}
-            className="p-1 rounded-md text-text-muted hover:text-red-500 hover:bg-red-50
+            className="p-1 rounded-md text-[#777] hover:text-[#191c1c] hover:bg-[#f2f4f3]
                        transition-colors"
             title="Remove topic"
           >

@@ -23,7 +23,7 @@ export default function SectionEditor({ section, onUpdate, onRegenerate }: Props
   };
 
   return (
-    <div className="rounded-xl bg-white border border-border-default p-4 transition-colors hover:border-primary-border">
+    <div className="rounded-xl bg-white border border-border-default p-4 transition-colors hover:border-[#c6c6c6]">
       <div className="flex items-center justify-between mb-3">
         <span className="text-[13px] font-semibold">{section.title}</span>
         <div className="flex items-center gap-3">
@@ -49,7 +49,7 @@ export default function SectionEditor({ section, onUpdate, onRegenerate }: Props
           onChange={(e) => onUpdate(e.target.value)}
           rows={6}
           className="w-full bg-surface border border-border-default rounded-lg p-3 text-[13px] text-foreground
-                     resize-none focus:outline-none focus:border-primary-border transition-colors leading-relaxed"
+                     resize-none focus:outline-none focus:border-[#777777] transition-colors leading-relaxed"
         />
       ) : (
         <div className="text-[13px] text-text-secondary leading-relaxed whitespace-pre-wrap">

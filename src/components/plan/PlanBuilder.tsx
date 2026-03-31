@@ -26,20 +26,20 @@ export default function PlanBuilder() {
   // Create plan if none exists
   if (!plan) {
     return (
-      <div className="rounded-xl border border-border-default bg-surface p-8 text-center space-y-4">
-        <div className="w-14 h-14 mx-auto rounded-xl bg-primary-light border border-primary-border flex items-center justify-center">
-          <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-8 text-center space-y-4">
+        <div className="w-14 h-14 mx-auto rounded-xl bg-[#f2f4f3] border border-black/[0.06] flex items-center justify-center">
+          <svg className="w-6 h-6 text-[#191c1c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
           </svg>
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-foreground">No study plan yet</h3>
-          <p className="text-xs text-text-muted mt-1">Create a plan to organize your interview preparation</p>
+          <h3 className="text-sm font-semibold text-[#191c1c]">No study plan yet</h3>
+          <p className="text-xs text-[#777] mt-1">Create a plan to organize your interview preparation</p>
         </div>
         <button
           onClick={() => createPlan("Interview Prep")}
-          className="px-5 py-2.5 rounded-xl text-sm font-medium bg-primary-light text-primary
-                     border border-primary-border hover:bg-primary-light transition-colors"
+          className="px-5 py-2.5 rounded-xl text-sm font-medium bg-black text-white
+                     hover:bg-black/90 transition-colors"
         >
           Create Study Plan
         </button>
@@ -87,15 +87,15 @@ export default function PlanBuilder() {
             onChange={(e) => setCustomTitle(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleAddCustom()}
             placeholder="Add a topic (e.g. Binary Search, SQL JOINs)"
-            className="flex-1 px-4 py-2.5 rounded-xl bg-white border border-border-default
-                       text-sm text-foreground placeholder:text-text-muted
-                       focus:outline-none focus:border-primary-border transition-colors"
+            className="flex-1 px-4 py-2.5 rounded-xl bg-white border border-black/15
+                       text-sm text-[#191c1c] placeholder:text-[#777]
+                       focus:outline-none focus:border-black/30 transition-colors"
           />
           <select
             value={customType}
             onChange={(e) => setCustomType(e.target.value as TopicType)}
-            className="px-3 py-2.5 rounded-xl bg-white border border-border-default
-                       text-xs text-text-secondary focus:outline-none focus:border-primary-border transition-colors"
+            className="px-3 py-2.5 rounded-xl bg-white border border-black/15
+                       text-xs text-[#474747] focus:outline-none focus:border-black/30 transition-colors"
           >
             <option value="coding">Coding</option>
             <option value="sql">SQL</option>
@@ -106,8 +106,8 @@ export default function PlanBuilder() {
           <select
             value={customDifficulty}
             onChange={(e) => setCustomDifficulty(e.target.value as Difficulty)}
-            className="px-3 py-2.5 rounded-xl bg-white border border-border-default
-                       text-xs text-text-secondary focus:outline-none focus:border-primary-border transition-colors"
+            className="px-3 py-2.5 rounded-xl bg-white border border-black/15
+                       text-xs text-[#474747] focus:outline-none focus:border-black/30 transition-colors"
           >
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
@@ -116,8 +116,8 @@ export default function PlanBuilder() {
           <button
             onClick={handleAddCustom}
             disabled={!customTitle.trim()}
-            className="px-4 py-2.5 rounded-xl text-sm font-medium bg-primary-light text-primary
-                       border border-primary-border hover:bg-primary-light transition-colors
+            className="px-4 py-2.5 rounded-xl text-sm font-medium bg-black text-white
+                       hover:bg-black/90 transition-colors
                        disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Add
@@ -126,7 +126,7 @@ export default function PlanBuilder() {
 
         <button
           onClick={() => setShowTemplates(!showTemplates)}
-          className="text-xs text-success hover:text-success/80 transition-colors flex items-center gap-1"
+          className="text-xs text-[#474747] hover:text-[#191c1c] transition-colors flex items-center gap-1"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -142,11 +142,11 @@ export default function PlanBuilder() {
             <button
               key={name}
               onClick={() => handleAddTemplate(name)}
-              className="p-3 rounded-xl border border-border-default bg-surface
-                         hover:border-success-border hover:bg-success-light transition-all text-left"
+              className="p-3 rounded-xl bg-white border border-black/[0.06]
+                         hover:border-black/30 transition-all text-left"
             >
-              <div className="text-sm font-medium text-foreground">{name}</div>
-              <div className="text-[10px] text-text-muted mt-1">{topics.length} topics</div>
+              <div className="text-sm font-medium text-[#191c1c]">{name}</div>
+              <div className="text-[10px] text-[#777] mt-1">{topics.length} topics</div>
             </button>
           ))}
         </div>
@@ -169,8 +169,8 @@ export default function PlanBuilder() {
           ))}
         </div>
       ) : (
-        <div className="rounded-xl border border-dashed border-border-default p-8 text-center">
-          <p className="text-sm text-text-muted">
+        <div className="rounded-xl border border-dashed border-black/15 p-8 text-center">
+          <p className="text-sm text-[#777]">
             Add topics manually or pick from templates above to build your study plan.
           </p>
         </div>

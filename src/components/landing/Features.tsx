@@ -1,179 +1,226 @@
 "use client";
 
-import { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "framer-motion";
 
 const features = [
   {
-    number: "01",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+        <path d="M14 2v6h6" />
+        <path d="M16 13H8" />
+        <path d="M16 17H8" />
+        <path d="M10 9H8" />
+      </svg>
+    ),
     title: "ATS Resume Scanner",
     description:
       "Check your resume's ATS compatibility score instantly. Get keyword match analysis, formatting feedback, and actionable improvements — all in your browser.",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
-    number: "02",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+        <path d="M11 8v6" />
+        <path d="M8 11h6" />
+      </svg>
+    ),
     title: "Gap Analysis",
     description:
       "See exactly which skills you're missing for a role. Compare your resume against any job description instantly and know where to focus.",
+    iconBg: "bg-[#e6e9e8]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#c6c6c6]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
-    number: "03",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+        <path d="m9 9.5 2 2 4-4" />
+      </svg>
+    ),
     title: "AI Resume Tailoring",
     description:
       "Generate role-specific resumes tailored to each job description. Edit section-by-section or get a complete rewrite. Export as PDF or DOCX.",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
-    number: "04",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+        <line x1="12" y1="2" x2="12" y2="22" opacity="0.3" />
+      </svg>
+    ),
     title: "Application Tracker",
     description:
-      "Track every application in a Kanban board. Monitor statuses from applied to offered. Never lose track of where you stand.",
+      "Track every application in a Kanban board. Monitor statuses from applied to offered. Never lose track of where you stand. (Coming Soon)",
+    iconBg: "bg-[#e6e9e8]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#c6c6c6]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
-    number: "05",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+    ),
     title: "In-Browser Code Practice",
     description:
-      "Full code editor with Python, SQL, and JavaScript execution. No setup needed — write code, run it, get instant feedback.",
+      "Full code editor with Python, SQL, and JavaScript execution. No setup needed — write code, run it, get instant feedback right in your browser.",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
-    number: "06",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path d="M12 2v4" />
+        <path d="m16.2 7.8 2.9-2.9" />
+        <path d="M18 12h4" />
+        <path d="m16.2 16.2 2.9 2.9" />
+        <path d="M12 18v4" />
+        <path d="m4.9 19.1 2.9-2.9" />
+        <path d="M2 12h4" />
+        <path d="m4.9 4.9 2.9 2.9" />
+      </svg>
+    ),
     title: "AI-Powered Prep",
     description:
       "Get AI feedback on your code, generate personalized study plans, and practice with an AI interview coach. Bring your own API key.",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#474747]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
 ];
 
 export default function Features() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const slider = sliderRef.current;
-      if (!slider) return;
-
-      // Animate header in with ScrollTrigger
-      gsap.from(headerRef.current, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-
-      // Horizontal scroll: pin section, translate slider left
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 768px)", () => {
-        gsap.to(slider, {
-          x: () => -(slider.scrollWidth - window.innerWidth + 96),
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            pin: true,
-            scrub: 1.2,
-            end: () => `+=${slider.scrollWidth - window.innerWidth + 96}`,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        // Each card fades + rises slightly as it enters
-        const cards = slider.querySelectorAll<HTMLElement>(".feature-card");
-        cards.forEach((card) => {
-          gsap.from(card, {
-            opacity: 0,
-            y: 24,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "left 85%",
-              toggleActions: "play none none none",
-            },
-          });
-        });
-      });
-    },
-    { scope: sectionRef }
-  );
-
   return (
-    <section ref={sectionRef} id="features" className="bg-white overflow-hidden">
-      {/* Inner sticky container */}
-      <div className="h-screen flex flex-col justify-center">
-        {/* Section header */}
-        <div ref={headerRef} className="px-8 md:px-16 mb-14 flex items-end justify-between max-w-none">
-          <div>
-            <span className="text-[10px] font-mono text-black/30 tracking-[0.3em] uppercase block mb-3">
-              Features
-            </span>
-            <h2
-              className="text-4xl md:text-5xl font-bold text-black leading-tight"
-              style={{ fontFamily: "var(--font-cabinet)" }}
-            >
-              Everything you need
-              <br />
-              to get hired.
-            </h2>
-          </div>
-          <div className="hidden md:block text-right">
-            <p className="text-black/40 text-sm max-w-xs leading-relaxed">
-              A complete job search workflow
-              <br />
-              that runs entirely in your browser.
-            </p>
-            <div className="mt-4 flex items-center justify-end gap-2 text-[11px] font-mono text-black/30">
-              <span>Scroll to explore</span>
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </div>
-          </div>
-        </div>
+    <section id="features" className="relative py-32 overflow-hidden bg-white">
+      {/* Background grid */}
+      <div className="absolute inset-0 grid-bg opacity-20 overflow-hidden" />
 
-        {/* Horizontal slider */}
-        <div
-          ref={sliderRef}
-          className="flex gap-5 pl-8 md:pl-16 pr-16"
-          style={{ width: "max-content" }}
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          {features.map((feature) => (
-            <div
-              key={feature.number}
-              className="feature-card flex-shrink-0 w-72 md:w-80 border border-black/10 p-8 flex flex-col
-                         hover:border-black/25 transition-colors duration-300 group"
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
+            Features
+          </span>
+          <h2
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Everything You Need to{" "}
+            <span className="text-[#191c1c]">Get Hired</span>
+          </h2>
+          <p className="max-w-2xl mx-auto text-[#474747] text-lg">
+            From ATS-optimized resumes to in-browser interview practice — a
+            complete job search workflow that runs entirely in your browser.
+          </p>
+        </motion.div>
+
+        {/* Feature grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {features.map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.6 }}
+              className="group relative"
             >
               <div
-                className="text-[11px] font-mono text-black/25 mb-8 tracking-widest"
+                className="relative h-full p-7 rounded-2xl bg-white
+                           border border-gray-200 hover:border-primary/30
+                           shadow-sm hover:shadow-md
+                           transition-all duration-500 overflow-hidden"
               >
-                {feature.number}
-              </div>
-              <h3
-                className="text-lg font-bold text-black mb-4 leading-tight group-hover:text-black/70 transition-colors"
-                style={{ fontFamily: "var(--font-cabinet)" }}
-              >
-                {feature.title}
-              </h3>
-              <p className="text-sm text-black/45 leading-relaxed mt-auto">
-                {feature.description}
-              </p>
+                {/* Hover glow */}
+                <div
+                  className={`absolute -top-20 -right-20 w-40 h-40 ${feature.hoverGlow} rounded-full blur-3xl
+                              opacity-0 group-hover:opacity-100 transition-opacity duration-700`}
+                />
 
-              {/* Bottom arrow */}
-              <div className="mt-8 flex items-center gap-2 text-[11px] font-mono text-black/20 group-hover:text-black/50 transition-colors">
-                <div className="w-4 h-px bg-current" />
-                <span className="tracking-widest uppercase">Learn more</span>
+                {/* Icon */}
+                <div
+                  className={`w-12 h-12 rounded-xl ${feature.iconBg}
+                              flex items-center justify-center ${feature.iconColor} mb-5
+                              border ${feature.borderColor}`}
+                >
+                  {feature.icon}
+                </div>
+
+                {/* Content */}
+                <h3 className="text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-[#474747] leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-
-          {/* End spacer card */}
-          <div className="flex-shrink-0 w-32" />
         </div>
       </div>
     </section>

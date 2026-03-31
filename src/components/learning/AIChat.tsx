@@ -55,8 +55,8 @@ export default function AIChat({ topicTitle }: AIChatProps) {
       <button
         onClick={() => setExpanded(true)}
         className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium
-                   bg-success-light text-success border border-success-border
-                   hover:bg-success-light transition-colors"
+                   bg-[#e6e9e8] text-success border border-[#c6c6c6]
+                   hover:bg-[#e6e9e8] transition-colors"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
@@ -67,9 +67,9 @@ export default function AIChat({ topicTitle }: AIChatProps) {
   }
 
   return (
-    <div className="rounded-xl border border-success-border bg-surface overflow-hidden">
+    <div className="rounded-xl border border-[#c6c6c6] bg-surface overflow-hidden">
       {/* Header */}
-      <div className="px-4 py-2.5 bg-success-light border-b border-success-border flex items-center justify-between">
+      <div className="px-4 py-2.5 bg-[#e6e9e8] border-b border-[#c6c6c6] flex items-center justify-between">
         <div className="flex items-center gap-2">
           <svg className="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
@@ -98,7 +98,7 @@ export default function AIChat({ topicTitle }: AIChatProps) {
             <div
               className={`max-w-[85%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed ${
                 msg.role === "user"
-                  ? "bg-primary-light text-foreground border border-primary-border"
+                  ? "bg-[#f2f4f3] text-foreground border border-[#c6c6c6]"
                   : "bg-white border border-border-default"
               }`}
             >
@@ -137,14 +137,14 @@ export default function AIChat({ topicTitle }: AIChatProps) {
             disabled={loading}
             className="flex-1 px-3 py-2 rounded-lg bg-white border border-border-default
                        text-xs text-foreground placeholder:text-text-muted
-                       focus:outline-none focus:border-success-border transition-colors
+                       focus:outline-none focus:border-[#c6c6c6] transition-colors
                        disabled:opacity-50"
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || loading}
-            className="px-3 py-2 rounded-lg text-xs font-medium bg-success-light text-success
-                       border border-success-border hover:bg-success-light transition-colors
+            className="px-3 py-2 rounded-lg text-xs font-medium bg-[#e6e9e8] text-success
+                       border border-[#c6c6c6] hover:bg-[#e6e9e8] transition-colors
                        disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Send

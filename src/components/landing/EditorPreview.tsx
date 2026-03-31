@@ -72,27 +72,27 @@ export default function EditorPreview() {
   }, [inView]);
 
   return (
-    <section id="editor" className="relative py-32 overflow-hidden bg-white">
+    <section id="editor" className="relative py-32 overflow-hidden bg-surface">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="text-center mb-16"
         >
-          <span className="text-[10px] font-mono text-black/30 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
             Code Editor
           </span>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-black"
-            style={{ fontFamily: "var(--font-cabinet)" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
+            style={{ fontFamily: "var(--font-display)" }}
           >
-            Practice makes perfect.
+            Practice Makes <span className="gradient-text">Perfect.</span>
           </h2>
-          <p className="max-w-lg text-black/45 text-base md:text-lg">
-            Full-featured code editor with in-browser execution.
-            No setup, no installs.
+          <p className="max-w-2xl mx-auto text-slate-600 text-lg">
+            Full-featured code editor with in-browser execution — part of your
+            end-to-end interview prep workflow. No setup, no installs.
           </p>
         </motion.div>
 
@@ -103,12 +103,12 @@ export default function EditorPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative max-w-5xl"
+          className="relative max-w-5xl mx-auto"
         >
-          {/* No glow — clean monochrome */}
-          <div />
+          {/* Subtle glow behind editor */}
+          <div className="absolute -inset-4 bg-primary/[0.03] rounded-3xl blur-2xl" />
 
-          <div className="relative overflow-hidden border border-black/15 shadow-none">
+          <div className="relative rounded-2xl overflow-hidden border border-gray-300 shadow-xl">
             {/* Title bar — keep dark for authentic IDE feel */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#1e1e1e] border-b border-white/[0.06]">
               <div className="flex items-center gap-2">

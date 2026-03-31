@@ -94,14 +94,14 @@ export default function LearnTopicPage() {
                   const next = topic.status === "not_started" ? "in_progress" : "completed";
                   updateTopicStatus(topic.id, next);
                 }}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-primary-light text-primary
-                           border border-primary-border hover:bg-primary-light transition-colors"
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[#e6e9e8] text-[#191c1c]
+                           border border-[#c6c6c6] hover:bg-[#e1e3e2] transition-colors"
               >
                 {topic.status === "not_started" ? "Start Learning" : "Mark Complete"}
               </button>
             )}
             {topic.status === "completed" && (
-              <span className="px-3 py-1.5 rounded-lg text-xs font-medium text-primary bg-primary-light border border-primary-border">
+              <span className="px-3 py-1.5 rounded-lg text-xs font-medium text-[#191c1c] bg-[#e6e9e8] border border-[#c6c6c6]">
                 Completed
               </span>
             )}
@@ -120,18 +120,18 @@ export default function LearnTopicPage() {
               </span>
               <span className={`text-[10px] px-2 py-0.5 rounded-md ${
                 topic.difficulty === "easy"
-                  ? "text-primary bg-primary-light"
+                  ? "text-[#191c1c] bg-[#e6e9e8]"
                   : topic.difficulty === "medium"
-                    ? "text-yellow-600 bg-yellow-50"
-                    : "text-red-500 bg-red-50"
+                    ? "text-[#474747] bg-[#f2f4f3]"
+                    : "text-[#474747] bg-[#f2f4f3]"
               }`}>
                 {topic.difficulty}
               </span>
               <span className={`text-[10px] px-2 py-0.5 rounded-md ${
                 topic.status === "completed"
-                  ? "text-primary bg-primary-light"
+                  ? "text-[#191c1c] bg-[#e6e9e8]"
                   : topic.status === "in_progress"
-                    ? "text-yellow-600 bg-yellow-50"
+                    ? "text-[#474747] bg-[#f2f4f3]"
                     : "text-text-muted bg-white"
               }`}>
                 {STATUS_LABELS[topic.status]}
