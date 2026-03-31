@@ -15,7 +15,7 @@ export default function Footer() {
         >
           <h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-foreground"
-            style={{ fontFamily: "var(--font-cabinet)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Ready to <span className="gradient-text">Land Your Next Role</span>?
           </h2>
@@ -115,7 +115,7 @@ export default function Footer() {
                 />
               </svg>
             </div>
-            <span className="text-sm font-semibold text-foreground" style={{ fontFamily: "var(--font-cabinet)" }}>
+            <span className="text-sm font-semibold text-foreground" style={{ fontFamily: "var(--font-display)" }}>
               Prep<span className="text-primary">Wise</span>
             </span>
           </div>

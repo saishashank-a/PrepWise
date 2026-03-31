@@ -100,7 +100,7 @@ export default function Stats() {
             >
               <div
                 className="text-4xl md:text-5xl font-bold gradient-text mb-2"
-                style={{ fontFamily: "var(--font-cabinet)" }}
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 <AnimatedNumber
                   target={stat.value}

@@ -168,7 +168,7 @@ export default function Features() {
           </span>
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
-            style={{ fontFamily: "var(--font-cabinet)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Everything You Need to{" "}
             <span className="gradient-text">Get Hired</span>

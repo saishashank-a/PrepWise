@@ -86,7 +86,7 @@ export default function EditorPreview() {
           </span>
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
-            style={{ fontFamily: "var(--font-cabinet)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Practice Makes <span className="gradient-text">Perfect.</span>
           </h2>

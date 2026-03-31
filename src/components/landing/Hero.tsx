@@ -41,7 +41,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] tracking-tight mb-6 text-foreground"
-          style={{ fontFamily: "var(--font-cabinet)" }}
+          style={{ fontFamily: "var(--font-display)" }}
         >
           <span className="block">Land Your Next</span>
           <span className="block gradient-text glow-text">

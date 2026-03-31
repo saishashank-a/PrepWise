@@ -17,7 +17,7 @@ export default function Pricing() {
           </span>
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
-            style={{ fontFamily: "var(--font-cabinet)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Completely <span className="gradient-text">Free</span>
           </h2>
@@ -41,7 +41,7 @@ export default function Pricing() {
               </div>
               <div
                 className="text-5xl font-bold mb-1 text-foreground"
-                style={{ fontFamily: "var(--font-cabinet)" }}
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 $0
                 <span className="text-lg text-slate-500 font-normal">/mo</span>
@@ -106,7 +106,7 @@ export default function Pricing() {
               </div>
               <div
                 className="text-5xl font-bold text-slate-400 mb-1"
-                style={{ fontFamily: "var(--font-cabinet)" }}
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 $?
                 <span className="text-lg font-normal">/mo</span>

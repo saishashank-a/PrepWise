@@ -55,7 +55,7 @@ export default function Navbar() {
             </div>
             <span
               className="text-lg font-bold tracking-tight text-foreground"
-              style={{ fontFamily: "var(--font-cabinet)" }}
+              style={{ fontFamily: "var(--font-display)" }}
             >
               Prep<span className="text-primary">Wise</span>
             </span>
@@ -126,7 +126,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="text-2xl font-light text-slate-600 hover:text-foreground transition-colors"
-                  style={{ fontFamily: "var(--font-cabinet)" }}
+                  style={{ fontFamily: "var(--font-display)" }}
                 >
                   {link.label}
                 </a>

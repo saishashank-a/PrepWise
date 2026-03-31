@@ -137,7 +137,7 @@ export default function HowItWorks() {
           </span>
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
-            style={{ fontFamily: "var(--font-cabinet)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Four Steps to{" "}
             <span className="gradient-text">Your Next Role</span>
@@ -165,13 +165,13 @@ export default function HowItWorks() {
                 <div className="flex-1 text-center lg:text-left">
                   <div
                     className="text-6xl font-bold text-primary/20 mb-2 select-none"
-                    style={{ fontFamily: "var(--font-cabinet)" }}
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     {step.number}
                   </div>
                   <h3
                     className="text-2xl md:text-3xl font-bold mb-4 text-foreground"
-                    style={{ fontFamily: "var(--font-cabinet)" }}
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     {step.title}
                   </h3>
