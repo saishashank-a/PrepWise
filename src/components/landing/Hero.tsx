@@ -44,7 +44,7 @@ export default function Hero() {
           style={{ fontFamily: "var(--font-display)" }}
         >
           <span className="block">Land Your Next</span>
-          <span className="block gradient-text glow-text">
+          <span className="block gradient-text">
             Role, Faster
           </span>
         </motion.h1>
@@ -94,7 +94,7 @@ export default function Hero() {
             </span>
           </a>
           <a
-            href="#editor"
+            href="#features"
             className="px-8 py-4 rounded-xl font-medium text-[#474747]
                        border border-gray-300 hover:border-primary/40
                        hover:text-foreground transition-all duration-300"
