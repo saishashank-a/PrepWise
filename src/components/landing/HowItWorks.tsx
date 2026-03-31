@@ -1,6 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -8,183 +13,138 @@ const steps = [
     title: "Upload Your Resume",
     description:
       "Drop your PDF or DOCX. Our in-browser parser extracts your skills instantly and runs an ATS compatibility check — no data leaves your machine.",
-    visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-            <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-            </svg>
-          </div>
-          <div>
-            <div className="text-xs font-medium text-foreground">resume_2024.pdf</div>
-            <div className="text-[10px] text-slate-400">245 KB</div>
-          </div>
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          {["Python", "React", "SQL", "AWS"].map((s) => (
-            <span key={s} className="px-2 py-0.5 text-[10px] rounded-full bg-primary/10 text-primary border border-primary/20">
-              {s}
-            </span>
-          ))}
-        </div>
-      </div>
-    ),
+    tag: "Privacy-first",
   },
   {
     number: "02",
     title: "Check Your ATS Score",
     description:
       "Paste any job description and instantly see your ATS compatibility score, missing keywords, and formatting issues. Know exactly where you stand.",
-    visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
-        <div className="text-[10px] font-mono text-slate-600 leading-relaxed">
-          <span className="text-foreground">Senior Software Engineer</span>
-          <br />
-          Requirements: Python, TypeScript,{" "}
-          <span className="bg-red-50 text-red-500 px-0.5 rounded">Kubernetes</span>,{" "}
-          <span className="bg-primary/10 text-primary px-0.5 rounded">React</span>,{" "}
-          <span className="bg-red-50 text-red-500 px-0.5 rounded">GraphQL</span>,{" "}
-          <span className="bg-primary/10 text-primary px-0.5 rounded">SQL</span>,{" "}
-          <span className="bg-red-50 text-red-500 px-0.5 rounded">System Design</span>
-        </div>
-        <div className="absolute bottom-3 right-3 text-[10px] text-slate-400">
-          <span className="text-primary">4</span> match &middot;{" "}
-          <span className="text-red-500">3</span> gaps
-        </div>
-      </div>
-    ),
+    tag: "Instant feedback",
   },
   {
     number: "03",
     title: "Tailor & Apply",
     description:
-      "Generate a role-specific resume tailored to the job description. Download as PDF or DOCX and track your application status.",
-    visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-6 h-6 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center">
-            <svg className="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-            </svg>
-          </div>
-          <span className="text-[10px] font-medium text-foreground">AI-Tailored Resume</span>
-        </div>
-        <div className="space-y-1.5">
-          {[
-            { label: "Keyword match", pct: 92 },
-            { label: "ATS score", pct: 88 },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center gap-2">
-              <div className="text-[9px] text-slate-500 w-20 shrink-0">{item.label}</div>
-              <div className="flex-1 h-1 rounded-full bg-slate-100 overflow-hidden">
-                <div className="h-full rounded-full bg-success/60" style={{ width: `${item.pct}%` }} />
-              </div>
-              <span className="text-[9px] text-success">{item.pct}%</span>
-            </div>
-          ))}
-        </div>
-        <div className="absolute bottom-3 right-3 flex gap-1.5">
-          <span className="px-1.5 py-0.5 text-[9px] rounded bg-primary/10 text-primary border border-primary/20">PDF</span>
-          <span className="px-1.5 py-0.5 text-[9px] rounded bg-emerald-50 text-success border border-emerald-100">DOCX</span>
-        </div>
-      </div>
-    ),
+      "Generate a role-specific resume tailored to the job description. Download as PDF or DOCX and track your application in the Kanban board.",
+    tag: "AI-powered",
   },
   {
     number: "04",
     title: "Prepare & Practice",
     description:
       "Build a study plan for your interviews. Practice coding, SQL, and system design — all in your browser. Show up to every interview ready.",
-    visual: (
-      <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
-        <div className="flex items-center gap-2 mb-2">
-          <div className="text-[10px] font-mono text-success">4/4 passed</div>
-          <div className="flex-1 h-1 rounded-full bg-slate-100 overflow-hidden">
-            <div className="h-full rounded-full bg-success/60 w-full" />
-          </div>
-        </div>
-        <div className="space-y-1">
-          {["Test 1: Basic case", "Test 2: Edge case", "Test 3: Large input", "Test 4: Empty"].map(
-            (t) => (
-              <div key={t} className="flex items-center gap-1.5 text-[10px] font-mono text-success">
-                <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                {t}
-              </div>
-            )
-          )}
-        </div>
-      </div>
-    ),
+    tag: "In-browser IDE",
   },
 ];
 
 export default function HowItWorks() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // Header reveal
+      gsap.from(".hiw-header", {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+      });
+
+      // Each step: line grows, then content fades in
+      const stepEls = sectionRef.current?.querySelectorAll<HTMLElement>(".hiw-step");
+      stepEls?.forEach((step) => {
+        const line = step.querySelector<HTMLElement>(".step-line");
+        const content = step.querySelector<HTMLElement>(".step-content");
+
+        gsap.from(line, {
+          scaleY: 0,
+          transformOrigin: "top center",
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: step,
+            start: "top 75%",
+          },
+        });
+
+        gsap.from(content, {
+          opacity: 0,
+          x: -24,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: step,
+            start: "top 70%",
+          },
+        });
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section id="how-it-works" className="relative py-32 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
+    <section
+      ref={sectionRef}
+      id="how-it-works"
+      className="relative py-32 bg-white"
+    >
+      <div className="max-w-5xl mx-auto px-6 md:px-12">
+        {/* Header */}
+        <div className="hiw-header mb-20">
+          <span className="text-[10px] font-mono text-black/30 tracking-[0.3em] uppercase block mb-4">
             How It Works
           </span>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight"
             style={{ fontFamily: "var(--font-cabinet)" }}
           >
-            Four Steps to{" "}
-            <span className="gradient-text">Your Next Role</span>
+            Four steps to
+            <br />
+            your next role.
           </h2>
-        </motion.div>
+        </div>
 
         {/* Steps */}
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/30 via-primary/20 to-transparent" />
-
-          <div className="space-y-16 lg:space-y-24">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7 }}
-                className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-16 ${
-                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                {/* Text */}
-                <div className="flex-1 text-center lg:text-left">
-                  <div
-                    className="text-6xl font-bold text-primary/20 mb-2 select-none"
-                    style={{ fontFamily: "var(--font-cabinet)" }}
-                  >
-                    {step.number}
-                  </div>
-                  <h3
-                    className="text-2xl md:text-3xl font-bold mb-4 text-foreground"
-                    style={{ fontFamily: "var(--font-cabinet)" }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed max-w-md">
-                    {step.description}
-                  </p>
+        <div className="space-y-0">
+          {steps.map((step, i) => (
+            <div
+              key={step.number}
+              className="hiw-step flex gap-8 md:gap-16 group"
+            >
+              {/* Left: number + vertical line */}
+              <div className="flex flex-col items-center flex-shrink-0">
+                <div className="w-10 h-10 flex items-center justify-center border border-black/15 text-[11px] font-mono text-black/40">
+                  {step.number}
                 </div>
+                {i < steps.length - 1 && (
+                  <div className="step-line w-px flex-1 mt-2 bg-black/10 min-h-[80px]" />
+                )}
+              </div>
 
-                {/* Visual */}
-                <div className="flex-1 w-full max-w-md">{step.visual}</div>
-              </motion.div>
-            ))}
-          </div>
+              {/* Right: content */}
+              <div className="step-content pb-16 pt-1 flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[10px] font-mono text-black/30 border border-black/10 px-2 py-1 tracking-widest uppercase">
+                    {step.tag}
+                  </span>
+                </div>
+                <h3
+                  className="text-2xl md:text-3xl font-bold text-black mb-4 leading-tight"
+                  style={{ fontFamily: "var(--font-cabinet)" }}
+                >
+                  {step.title}
+                </h3>
+                <p className="text-black/50 leading-relaxed max-w-lg text-sm md:text-base">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

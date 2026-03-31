@@ -105,9 +105,9 @@ body {
   border: 1px solid var(--color-primary-border);
 }
 
-/* Gradient text — blue to emerald */
+/* Gradient text — monochrome */
 .gradient-text {
-  background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #555555 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -115,14 +115,43 @@ body {
 
 /* Grid pattern — subtle for light */
 .grid-bg {
-  background-image: linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* Noise overlay — disabled for light theme */
+/* Hero dot grid */
+.hero-dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Noise overlay for dark hero */
+.noise-hero {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+/* Noise overlay — kept for app pages */
 .noise::after {
   display: none;
+}
+
+/* GSAP visibility helper — hides elements before GSAP hydrates */
+.gsap-reveal {
+  visibility: hidden;
 }
 
 /* Animated border — blue for light */

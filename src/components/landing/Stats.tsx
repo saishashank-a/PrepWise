@@ -1,122 +1,88 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-function AnimatedNumber({
-  target,
-  suffix = "",
-  prefix = "",
-}: {
-  target: number;
-  suffix?: string;
-  prefix?: string;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          const duration = 2000;
-          const start = performance.now();
-
-          const animate = (now: number) => {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(eased * target));
-            if (progress < 1) requestAnimationFrame(animate);
-          };
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [target]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {prefix}
-      {count}
-      {suffix}
-    </span>
-  );
-}
+gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  {
-    value: 2,
-    suffix: "",
-    label: "Resume Formats",
-    description: "PDF & DOCX export",
-    prefix: "",
-  },
-  {
-    value: 0,
-    suffix: "",
-    label: "Monthly Cost",
-    description: "100% free, forever",
-    prefix: "$",
-  },
-  {
-    value: 100,
-    suffix: "%",
-    label: "ATS Score Check",
-    description: "Instant feedback",
-    prefix: "",
-  },
-  {
-    value: 50,
-    suffix: "+",
-    label: "Practice Problems",
-    description: "Resume to interview",
-    prefix: "",
-  },
+  { value: 2, suffix: "", prefix: "", label: "Resume Formats", description: "PDF & DOCX export" },
+  { value: 0, suffix: "", prefix: "$", label: "Monthly Cost", description: "100% free, forever" },
+  { value: 100, suffix: "%", prefix: "", label: "ATS Score Check", description: "Instant feedback" },
+  { value: 50, suffix: "+", prefix: "", label: "Practice Problems", description: "Resume to interview" },
 ];
 
 export default function Stats() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // Animate stat values with GSAP counter
+      const statEls = sectionRef.current?.querySelectorAll<HTMLElement>(".stat-value");
+      statEls?.forEach((el) => {
+        const target = parseFloat(el.dataset.target ?? "0");
+        const obj = { val: 0 };
+
+        gsap.to(obj, {
+          val: target,
+          duration: 2,
+          ease: "power2.out",
+          onUpdate: () => {
+            el.textContent = Math.round(obj.val).toString();
+          },
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+
+      // Stagger entire stat blocks
+      gsap.from(".stat-block", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="relative py-24 bg-slate-50">
-      {/* Top line */}
+    <section ref={sectionRef} className="relative py-20 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent mb-16" />
+        <div className="h-px bg-white/8 mb-16" />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="text-center group"
-            >
+          {stats.map((stat) => (
+            <div key={stat.label} className="stat-block text-center group">
               <div
-                className="text-4xl md:text-5xl font-bold gradient-text mb-2"
+                className="text-5xl md:text-6xl font-bold text-white mb-3 tabular-nums"
                 style={{ fontFamily: "var(--font-cabinet)" }}
               >
-                <AnimatedNumber
-                  target={stat.value}
-                  suffix={stat.suffix}
-                  prefix={stat.prefix}
-                />
+                {stat.prefix}
+                <span className="stat-value" data-target={stat.value}>
+                  0
+                </span>
+                {stat.suffix}
               </div>
-              <div className="text-sm font-semibold text-slate-800 mb-1">
+              <div className="text-xs font-semibold text-white/50 mb-1 tracking-wider uppercase">
                 {stat.label}
               </div>
-              <div className="text-xs text-slate-500">{stat.description}</div>
-            </motion.div>
+              <div className="text-xs text-white/25 font-mono">{stat.description}</div>
+            </div>
           ))}
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent mt-16" />
+        <div className="h-px bg-white/8 mt-16" />
       </div>
     </section>
   );
