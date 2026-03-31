@@ -30,7 +30,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-gray-200 backdrop-blur-sm mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-          <span className="text-xs font-medium text-slate-600 tracking-wide uppercase">
+          <span className="text-xs font-medium text-[#474747] tracking-wide uppercase">
             Your Job Search Companion
           </span>
         </motion.div>
@@ -54,7 +54,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-lg sm:text-xl text-[#474747] leading-relaxed mb-10"
         >
           Build ATS-optimized resumes, track your applications, and prepare for
           interviews — all in one place.{" "}
@@ -74,7 +74,7 @@ export default function Hero() {
             href="/dashboard"
             className="group relative px-8 py-4 rounded-xl font-semibold text-white
                        bg-primary hover:bg-primary/90
-                       hover:shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-all duration-500"
+                       transition-all duration-500"
           >
             <span className="relative z-10 flex items-center gap-2">
               Get Started Free
@@ -95,7 +95,7 @@ export default function Hero() {
           </a>
           <a
             href="#editor"
-            className="px-8 py-4 rounded-xl font-medium text-slate-600
+            className="px-8 py-4 rounded-xl font-medium text-[#474747]
                        border border-gray-300 hover:border-primary/40
                        hover:text-foreground transition-all duration-300"
           >
@@ -120,7 +120,7 @@ export default function Hero() {
           ].map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 text-xs font-mono text-slate-500 border border-gray-200 rounded-md bg-slate-50"
+              className="px-3 py-1 text-xs font-mono text-[#474747] border border-gray-200 rounded-md bg-[#f8faf9]"
             >
               {tech}
             </span>

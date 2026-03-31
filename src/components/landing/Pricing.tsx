@@ -19,9 +19,9 @@ export default function Pricing() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Completely <span className="gradient-text">Free</span>
+            Completely <span className="text-[#191c1c]">Free</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-slate-600 text-lg">
+          <p className="max-w-2xl mx-auto text-[#474747] text-lg">
             No credit card. No trial. No catch. Everything runs in your browser
             on free-tier services.
           </p>
@@ -44,9 +44,9 @@ export default function Pricing() {
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 $0
-                <span className="text-lg text-slate-500 font-normal">/mo</span>
+                <span className="text-lg text-[#474747] font-normal">/mo</span>
               </div>
-              <p className="text-sm text-slate-600 mb-8">
+              <p className="text-sm text-[#474747] mb-8">
                 Everything you need to land your next role
               </p>
 
@@ -62,7 +62,7 @@ export default function Pricing() {
                   "Auto-graded test cases",
                   "50+ practice problems",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
+                  <li key={item} className="flex items-center gap-2 text-sm text-[#191c1c]">
                     <svg
                       className="w-4 h-4 text-success flex-shrink-0"
                       fill="none"
@@ -85,7 +85,7 @@ export default function Pricing() {
                 href="/dashboard"
                 className="block w-full py-3 rounded-xl text-center font-semibold text-white
                            bg-primary hover:bg-primary/90
-                           hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] transition-all duration-500"
+                           transition-all duration-500"
               >
                 Get Started Free
               </a>
@@ -101,17 +101,17 @@ export default function Pricing() {
             className="relative"
           >
             <div className="rounded-2xl p-8 bg-white border border-gray-200 shadow-sm">
-              <div className="text-sm text-slate-400 font-mono mb-4">
+              <div className="text-sm text-[#777777] font-mono mb-4">
                 Pro (Coming Soon)
               </div>
               <div
-                className="text-5xl font-bold text-slate-400 mb-1"
+                className="text-5xl font-bold text-[#777777] mb-1"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 $?
                 <span className="text-lg font-normal">/mo</span>
               </div>
-              <p className="text-sm text-slate-400 mb-8">Advanced AI features</p>
+              <p className="text-sm text-[#777777] mb-8">Advanced AI features</p>
 
               <ul className="space-y-3 mb-8">
                 {[
@@ -123,9 +123,9 @@ export default function Pricing() {
                   "Mock interviews",
                   "Priority support",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-slate-400">
+                  <li key={item} className="flex items-center gap-2 text-sm text-[#777777]">
                     <svg
-                      className="w-4 h-4 text-slate-300 flex-shrink-0"
+                      className="w-4 h-4 text-[#c6c6c6] flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -144,8 +144,8 @@ export default function Pricing() {
 
               <button
                 disabled
-                className="block w-full py-3 rounded-xl text-center font-medium text-slate-400
-                           border border-gray-200 cursor-not-allowed bg-slate-50"
+                className="block w-full py-3 rounded-xl text-center font-medium text-[#777777]
+                           border border-gray-200 cursor-not-allowed bg-[#f8faf9]"
               >
                 Coming Soon
               </button>

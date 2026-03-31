@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative py-20 border-t border-gray-200 bg-slate-50">
+    <footer className="relative py-20 border-t border-gray-200 bg-[#f8faf9]">
       <div className="max-w-7xl mx-auto px-6">
         {/* CTA Section */}
         <motion.div
@@ -17,9 +17,9 @@ export default function Footer() {
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-foreground"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Ready to <span className="gradient-text">Land Your Next Role</span>?
+            Ready to <span className="text-[#191c1c]">Land Your Next Role</span>?
           </h2>
-          <p className="text-slate-500 mb-8 max-w-xl mx-auto">
+          <p className="text-[#474747] mb-8 max-w-xl mx-auto">
             Upload your resume, check your ATS score, tailor for the role, and
             prep for the interview — all in one place, completely free.
           </p>
@@ -27,7 +27,7 @@ export default function Footer() {
             href="/dashboard"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white
                        bg-primary hover:bg-primary/90
-                       hover:shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-all duration-500"
+                       transition-all duration-500"
           >
             Start Free
             <svg
@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Features", "Editor", "Study Plans", "Practice"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-[#474747] hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -65,7 +65,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Documentation", "Blog", "Changelog", "Roadmap"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-[#474747] hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -77,7 +77,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["GitHub", "Discord", "Twitter", "Contribute"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-[#474747] hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -89,7 +89,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Privacy", "Terms", "Cookies"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="text-sm text-slate-500 hover:text-foreground transition-colors">
+                  <a href="#" className="text-sm text-[#474747] hover:text-foreground transition-colors">
                     {l}
                   </a>
                 </li>
@@ -119,7 +119,7 @@ export default function Footer() {
               Prep<span className="text-primary">Wise</span>
             </span>
           </div>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-[#474747]">
             Built with Next.js, Three.js, and WebAssembly. Open source &
             free forever.
           </p>

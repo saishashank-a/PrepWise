@@ -23,10 +23,10 @@ const features = [
     title: "ATS Resume Scanner",
     description:
       "Check your resume's ATS compatibility score instantly. Get keyword match analysis, formatting feedback, and actionable improvements — all in your browser.",
-    iconBg: "bg-blue-50",
-    iconColor: "text-primary",
-    borderColor: "border-blue-100",
-    hoverGlow: "bg-primary/[0.04]",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
     icon: (
@@ -47,10 +47,10 @@ const features = [
     title: "Gap Analysis",
     description:
       "See exactly which skills you're missing for a role. Compare your resume against any job description instantly and know where to focus.",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-success",
-    borderColor: "border-emerald-100",
-    hoverGlow: "bg-success/[0.04]",
+    iconBg: "bg-[#e6e9e8]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#c6c6c6]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
     icon: (
@@ -69,10 +69,10 @@ const features = [
     title: "AI Resume Tailoring",
     description:
       "Generate role-specific resumes tailored to each job description. Edit section-by-section or get a complete rewrite. Export as PDF or DOCX.",
-    iconBg: "bg-blue-50",
-    iconColor: "text-primary",
-    borderColor: "border-blue-100",
-    hoverGlow: "bg-primary/[0.04]",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
     icon: (
@@ -92,10 +92,10 @@ const features = [
     title: "Application Tracker",
     description:
       "Track every application in a Kanban board. Monitor statuses from applied to offered. Never lose track of where you stand. (Coming Soon)",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-success",
-    borderColor: "border-emerald-100",
-    hoverGlow: "bg-success/[0.04]",
+    iconBg: "bg-[#e6e9e8]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#c6c6c6]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
     icon: (
@@ -114,10 +114,10 @@ const features = [
     title: "In-Browser Code Practice",
     description:
       "Full code editor with Python, SQL, and JavaScript execution. No setup needed — write code, run it, get instant feedback right in your browser.",
-    iconBg: "bg-blue-50",
-    iconColor: "text-primary",
-    borderColor: "border-blue-100",
-    hoverGlow: "bg-primary/[0.04]",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#191c1c]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
   {
     icon: (
@@ -142,10 +142,10 @@ const features = [
     title: "AI-Powered Prep",
     description:
       "Get AI feedback on your code, generate personalized study plans, and practice with an AI interview coach. Bring your own API key.",
-    iconBg: "bg-rose-50",
-    iconColor: "text-rose-500",
-    borderColor: "border-rose-100",
-    hoverGlow: "bg-rose-50/50",
+    iconBg: "bg-[#f2f4f3]",
+    iconColor: "text-[#474747]",
+    borderColor: "border-[#e1e3e2]",
+    hoverGlow: "bg-black/[0.04]",
   },
 ];
 
@@ -171,9 +171,9 @@ export default function Features() {
             style={{ fontFamily: "var(--font-display)" }}
           >
             Everything You Need to{" "}
-            <span className="gradient-text">Get Hired</span>
+            <span className="text-[#191c1c]">Get Hired</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-slate-600 text-lg">
+          <p className="max-w-2xl mx-auto text-[#474747] text-lg">
             From ATS-optimized resumes to in-browser interview practice — a
             complete job search workflow that runs entirely in your browser.
           </p>
@@ -215,7 +215,7 @@ export default function Features() {
                 <h3 className="text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-[#474747] leading-relaxed">
                   {feature.description}
                 </p>
               </div>

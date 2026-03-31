@@ -83,10 +83,10 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative py-24 bg-slate-50">
+    <section className="relative py-24 bg-[#f8faf9]">
       {/* Top line */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent mb-16" />
+        <div className="h-px bg-gradient-to-r from-transparent via-[#c6c6c6] to-transparent mb-16" />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {stats.map((stat, i) => (
@@ -99,7 +99,7 @@ export default function Stats() {
               className="text-center group"
             >
               <div
-                className="text-4xl md:text-5xl font-bold gradient-text mb-2"
+                className="text-4xl md:text-5xl font-bold text-[#191c1c] mb-2"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 <AnimatedNumber
@@ -108,15 +108,15 @@ export default function Stats() {
                   prefix={stat.prefix}
                 />
               </div>
-              <div className="text-sm font-semibold text-slate-800 mb-1">
+              <div className="text-sm font-semibold text-[#191c1c] mb-1">
                 {stat.label}
               </div>
-              <div className="text-xs text-slate-500">{stat.description}</div>
+              <div className="text-xs text-[#474747]">{stat.description}</div>
             </motion.div>
           ))}
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent mt-16" />
+        <div className="h-px bg-gradient-to-r from-transparent via-[#c6c6c6] to-transparent mt-16" />
       </div>
     </section>
   );

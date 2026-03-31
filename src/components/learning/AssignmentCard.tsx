@@ -3,10 +3,10 @@
 import type { Assignment } from "@/lib/assignments";
 
 const LANG_COLORS: Record<string, string> = {
-  python: "text-blue-600 bg-blue-50",
-  javascript: "text-yellow-600 bg-yellow-50",
-  sql: "text-success bg-success-light",
-  java: "text-orange-600 bg-orange-50",
+  python: "text-[#191c1c] bg-[#f2f4f3]",
+  javascript: "text-[#474747] bg-[#f2f4f3]",
+  sql: "text-[#191c1c] bg-[#e6e9e8]",
+  java: "text-[#474747] bg-[#f2f4f3]",
 };
 
 interface AssignmentCardProps {
@@ -18,9 +18,9 @@ export default function AssignmentCard({ assignment, completed }: AssignmentCard
   return (
     <a
       href={`/practice/${assignment.id}`}
-      className={`block rounded-xl border p-4 transition-all hover:border-primary-border hover:bg-surface ${
+      className={`block rounded-xl border p-4 transition-all hover:border-[#c6c6c6] hover:bg-surface ${
         completed
-          ? "bg-primary-light border-primary-border"
+          ? "bg-[#e6e9e8] border-[#c6c6c6]"
           : "bg-white border-border-default"
       }`}
     >

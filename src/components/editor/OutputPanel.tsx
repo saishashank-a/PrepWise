@@ -19,7 +19,7 @@ export default function OutputPanel() {
         {hasOutput ? (
           <pre
             className={`text-xs font-mono leading-relaxed whitespace-pre-wrap break-words ${
-              error ? "text-red-500" : "text-primary"
+              error ? "text-[#474747]" : "text-primary"
             }`}
           >
             {error ? `Error: ${error}` : output}

@@ -18,7 +18,7 @@ const steps = [
           </div>
           <div>
             <div className="text-xs font-medium text-foreground">resume_2024.pdf</div>
-            <div className="text-[10px] text-slate-400">245 KB</div>
+            <div className="text-[10px] text-[#777777]">245 KB</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -38,19 +38,19 @@ const steps = [
       "Paste any job description and instantly see your ATS compatibility score, missing keywords, and formatting issues. Know exactly where you stand.",
     visual: (
       <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
-        <div className="text-[10px] font-mono text-slate-600 leading-relaxed">
+        <div className="text-[10px] font-mono text-[#474747] leading-relaxed">
           <span className="text-foreground">Senior Software Engineer</span>
           <br />
           Requirements: Python, TypeScript,{" "}
-          <span className="bg-red-50 text-red-500 px-0.5 rounded">Kubernetes</span>,{" "}
+          <span className="bg-[#f2f4f3] text-[#474747] px-0.5 rounded">Kubernetes</span>,{" "}
           <span className="bg-primary/10 text-primary px-0.5 rounded">React</span>,{" "}
-          <span className="bg-red-50 text-red-500 px-0.5 rounded">GraphQL</span>,{" "}
+          <span className="bg-[#f2f4f3] text-[#474747] px-0.5 rounded">GraphQL</span>,{" "}
           <span className="bg-primary/10 text-primary px-0.5 rounded">SQL</span>,{" "}
-          <span className="bg-red-50 text-red-500 px-0.5 rounded">System Design</span>
+          <span className="bg-[#f2f4f3] text-[#474747] px-0.5 rounded">System Design</span>
         </div>
-        <div className="absolute bottom-3 right-3 text-[10px] text-slate-400">
+        <div className="absolute bottom-3 right-3 text-[10px] text-[#777777]">
           <span className="text-primary">4</span> match &middot;{" "}
-          <span className="text-red-500">3</span> gaps
+          <span className="text-[#474747]">3</span> gaps
         </div>
       </div>
     ),
@@ -76,8 +76,8 @@ const steps = [
             { label: "ATS score", pct: 88 },
           ].map((item) => (
             <div key={item.label} className="flex items-center gap-2">
-              <div className="text-[9px] text-slate-500 w-20 shrink-0">{item.label}</div>
-              <div className="flex-1 h-1 rounded-full bg-slate-100 overflow-hidden">
+              <div className="text-[9px] text-[#474747] w-20 shrink-0">{item.label}</div>
+              <div className="flex-1 h-1 rounded-full bg-[#f2f4f3] overflow-hidden">
                 <div className="h-full rounded-full bg-success/60" style={{ width: `${item.pct}%` }} />
               </div>
               <span className="text-[9px] text-success">{item.pct}%</span>
@@ -86,7 +86,7 @@ const steps = [
         </div>
         <div className="absolute bottom-3 right-3 flex gap-1.5">
           <span className="px-1.5 py-0.5 text-[9px] rounded bg-primary/10 text-primary border border-primary/20">PDF</span>
-          <span className="px-1.5 py-0.5 text-[9px] rounded bg-emerald-50 text-success border border-emerald-100">DOCX</span>
+          <span className="px-1.5 py-0.5 text-[9px] rounded bg-[#e6e9e8] text-[#191c1c] border border-[#c6c6c6]">DOCX</span>
         </div>
       </div>
     ),
@@ -100,7 +100,7 @@ const steps = [
       <div className="relative w-full h-32 rounded-xl bg-white border border-gray-200 overflow-hidden p-4 shadow-sm">
         <div className="flex items-center gap-2 mb-2">
           <div className="text-[10px] font-mono text-success">4/4 passed</div>
-          <div className="flex-1 h-1 rounded-full bg-slate-100 overflow-hidden">
+          <div className="flex-1 h-1 rounded-full bg-[#f2f4f3] overflow-hidden">
             <div className="h-full rounded-full bg-success/60 w-full" />
           </div>
         </div>
@@ -123,7 +123,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-32 bg-slate-50">
+    <section id="how-it-works" className="relative py-32 bg-[#f8faf9]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <motion.div
@@ -140,7 +140,7 @@ export default function HowItWorks() {
             style={{ fontFamily: "var(--font-display)" }}
           >
             Four Steps to{" "}
-            <span className="gradient-text">Your Next Role</span>
+            <span className="text-[#191c1c]">Your Next Role</span>
           </h2>
         </motion.div>
 
@@ -175,7 +175,7 @@ export default function HowItWorks() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed max-w-md">
+                  <p className="text-[#474747] leading-relaxed max-w-md">
                     {step.description}
                   </p>
                 </div>

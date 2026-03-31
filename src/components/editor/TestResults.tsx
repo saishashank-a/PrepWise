@@ -34,7 +34,7 @@ export default function TestResults() {
           </svg>
           <span className="text-[10px] font-medium text-text-muted uppercase tracking-wider">Test Results</span>
         </div>
-        <span className={`text-xs font-bold ${allPassed ? "text-primary" : "text-yellow-600"}`}>
+        <span className={`text-xs font-bold ${allPassed ? "text-primary" : "text-[#474747]"}`}>
           {passed}/{total} passed
         </span>
       </div>
@@ -44,8 +44,8 @@ export default function TestResults() {
             key={result.testCase.id}
             className={`rounded-lg border p-2.5 ${
               result.passed
-                ? "bg-primary-light border-primary-border"
-                : "bg-red-50 border-red-200"
+                ? "bg-[#e6e9e8] border-[#c6c6c6]"
+                : "bg-[#f2f4f3] border-[#c6c6c6]"
             }`}
           >
             <div className="flex items-center gap-2 mb-1">
@@ -54,7 +54,7 @@ export default function TestResults() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               ) : (
-                <svg className="w-3.5 h-3.5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <svg className="w-3.5 h-3.5 text-[#474747] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               )}
@@ -72,7 +72,7 @@ export default function TestResults() {
                 </div>
                 <div className="text-[10px]">
                   <span className="text-text-muted">Got: </span>
-                  <code className="text-red-500 bg-white px-1 py-0.5 rounded">
+                  <code className="text-[#474747] bg-white px-1 py-0.5 rounded">
                     {result.actualOutput || "(empty)"}
                   </code>
                 </div>
