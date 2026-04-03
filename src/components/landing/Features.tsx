@@ -1,228 +1,172 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const features = [
   {
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-        <path d="M14 2v6h6" />
-        <path d="M16 13H8" />
-        <path d="M16 17H8" />
-        <path d="M10 9H8" />
-      </svg>
-    ),
-    title: "ATS Resume Scanner",
-    description:
-      "Check your resume's ATS compatibility score instantly. Get keyword match analysis, formatting feedback, and actionable improvements — all in your browser.",
-    iconBg: "bg-[#f2f4f3]",
-    iconColor: "text-[#191c1c]",
-    borderColor: "border-[#e1e3e2]",
-    hoverGlow: "bg-black/[0.04]",
+    number: "01",
+    eyebrow: "Gap Analysis",
+    headline: "Know exactly what's missing.",
+    body: "Upload your resume, paste the job description. PrepWise maps your skills against the role and shows you precisely where you fall short — so you know what to fix before you apply.",
+    img: "/product/gap-analysis.png",
+    alt: "Gap Analysis Dashboard",
+    url: "/dashboard",
+    cta: "Try gap analysis",
+    flip: false,
   },
   {
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.3-4.3" />
-        <path d="M11 8v6" />
-        <path d="M8 11h6" />
-      </svg>
-    ),
-    title: "Gap Analysis",
-    description:
-      "See exactly which skills you're missing for a role. Compare your resume against any job description instantly and know where to focus.",
-    iconBg: "bg-[#e6e9e8]",
-    iconColor: "text-[#191c1c]",
-    borderColor: "border-[#c6c6c6]",
-    hoverGlow: "bg-black/[0.04]",
+    number: "02",
+    eyebrow: "Application Tracker",
+    headline: "Every application.\nOne pipeline.",
+    body: "A Kanban board for your job search. Track every company from To Apply through Offer. Never lose track of where you stand or forget to follow up.",
+    img: "/product/tracker.png",
+    alt: "Application Pipeline",
+    url: "/tracker",
+    cta: "Open tracker",
+    flip: true,
   },
   {
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-        <path d="m9 9.5 2 2 4-4" />
-      </svg>
-    ),
-    title: "AI Resume Tailoring",
-    description:
-      "Generate role-specific resumes tailored to each job description. Edit section-by-section or get a complete rewrite. Export as PDF or DOCX.",
-    iconBg: "bg-[#f2f4f3]",
-    iconColor: "text-[#191c1c]",
-    borderColor: "border-[#e1e3e2]",
-    hoverGlow: "bg-black/[0.04]",
+    number: "03",
+    eyebrow: "AI Interview Prep",
+    headline: "Questions built for your\nexact role.",
+    body: "Add a job description and PrepWise generates 8 tailored interview questions — behavioral, technical, and system design. Answer them, get a score, get better.",
+    img: "/product/interview-prep.png",
+    alt: "Interview Prep",
+    url: "/tracker",
+    cta: "Prep an interview",
+    flip: false,
   },
-  {
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-        <line x1="12" y1="2" x2="12" y2="22" opacity="0.3" />
-      </svg>
-    ),
-    title: "Application Tracker",
-    description:
-      "Track every application in a Kanban board. Monitor statuses from applied to offered. Never lose track of where you stand. (Coming Soon)",
-    iconBg: "bg-[#e6e9e8]",
-    iconColor: "text-[#191c1c]",
-    borderColor: "border-[#c6c6c6]",
-    hoverGlow: "bg-black/[0.04]",
-  },
-  {
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    ),
-    title: "In-Browser Code Practice",
-    description:
-      "Full code editor with Python, SQL, and JavaScript execution. No setup needed — write code, run it, get instant feedback right in your browser.",
-    iconBg: "bg-[#f2f4f3]",
-    iconColor: "text-[#191c1c]",
-    borderColor: "border-[#e1e3e2]",
-    hoverGlow: "bg-black/[0.04]",
-  },
-  {
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <path d="M12 2v4" />
-        <path d="m16.2 7.8 2.9-2.9" />
-        <path d="M18 12h4" />
-        <path d="m16.2 16.2 2.9 2.9" />
-        <path d="M12 18v4" />
-        <path d="m4.9 19.1 2.9-2.9" />
-        <path d="M2 12h4" />
-        <path d="m4.9 4.9 2.9 2.9" />
-      </svg>
-    ),
-    title: "AI-Powered Prep",
-    description:
-      "Get AI feedback on your code, generate personalized study plans, and practice with an AI interview coach. Bring your own API key.",
-    iconBg: "bg-[#f2f4f3]",
-    iconColor: "text-[#474747]",
-    borderColor: "border-[#e1e3e2]",
-    hoverGlow: "bg-black/[0.04]",
-  },
+];
+
+const stats = [
+  { value: "50+", label: "Practice problems" },
+  { value: "$0", label: "Forever free" },
+  { value: "0", label: "Servers you need" },
+  { value: "100%", label: "Runs in browser" },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-32 overflow-hidden bg-white">
-      {/* Background grid */}
-      <div className="absolute inset-0 grid-bg opacity-20 overflow-hidden" />
-
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
-            Features
-          </span>
-          <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Everything You Need to{" "}
-            <span className="text-[#191c1c]">Get Hired</span>
-          </h2>
-          <p className="max-w-2xl mx-auto text-[#474747] text-lg">
-            From ATS-optimized resumes to in-browser interview practice — a
-            complete job search workflow that runs entirely in your browser.
-          </p>
-        </motion.div>
-
-        {/* Feature grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((feature, i) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.6 }}
-              className="group relative"
-            >
+    <>
+      {/* Stats strip */}
+      <div id="features" className="bg-[#0f0f0f] border-y border-white/[0.06] py-12">
+        <div className="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((s) => (
+            <div key={s.label} className="text-center">
               <div
-                className="relative h-full p-7 rounded-2xl bg-white
-                           border border-gray-200 hover:border-primary/30
-                           shadow-sm hover:shadow-md
-                           transition-all duration-500 overflow-hidden"
+                className="text-4xl font-black text-white mb-1"
+                style={{ fontFamily: "var(--font-display)" }}
               >
-                {/* Hover glow */}
-                <div
-                  className={`absolute -top-20 -right-20 w-40 h-40 ${feature.hoverGlow} rounded-full blur-3xl
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-700`}
-                />
-
-                {/* Icon */}
-                <div
-                  className={`w-12 h-12 rounded-xl ${feature.iconBg}
-                              flex items-center justify-center ${feature.iconColor} mb-5
-                              border ${feature.borderColor}`}
-                >
-                  {feature.icon}
-                </div>
-
-                {/* Content */}
-                <h3 className="text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-[#474747] leading-relaxed">
-                  {feature.description}
-                </p>
+                {s.value}
               </div>
-            </motion.div>
+              <div className="text-xs font-mono text-white/35 uppercase tracking-widest">{s.label}</div>
+            </div>
           ))}
         </div>
       </div>
-    </section>
+
+      {/* Feature sections */}
+      <div id="how-it-works" className="bg-white">
+        {features.map((f, i) => (
+          <section
+            key={f.number}
+            className={`relative py-24 md:py-32 border-b border-black/[0.06] ${
+              i % 2 === 1 ? "bg-[#f8f8f8]" : "bg-white"
+            }`}
+          >
+            <div className="max-w-6xl mx-auto px-6">
+              <div className={`flex flex-col ${f.flip ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-16 md:gap-20`}>
+
+                {/* Text */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span
+                      className="text-[11px] font-mono text-black/30 tracking-widest uppercase"
+                    >
+                      {f.number}
+                    </span>
+                    <span className="w-8 h-px bg-black/15" />
+                    <span className="text-[11px] font-mono text-black/30 tracking-widest uppercase">
+                      {f.eyebrow}
+                    </span>
+                  </div>
+
+                  <h2
+                    className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#0a0a0a] mb-6 whitespace-pre-line"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {f.headline}
+                  </h2>
+
+                  <p className="text-[15px] text-[#555] leading-relaxed max-w-md mb-10">
+                    {f.body}
+                  </p>
+
+                  <a
+                    href={f.url}
+                    className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#0a0a0a]
+                               border border-black/15 rounded-xl px-5 py-3
+                               hover:bg-black hover:text-white hover:border-black
+                               transition-all duration-200"
+                  >
+                    {f.cta}
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                </div>
+
+                {/* Screenshot */}
+                <div className="flex-1 min-w-0 w-full">
+                  <div
+                    className="rounded-2xl overflow-hidden border border-black/[0.08]"
+                    style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06)" }}
+                  >
+                    <img
+                      src={f.img}
+                      alt={f.alt}
+                      className="w-full block"
+                    />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {/* How it works — step flow */}
+      <section className="bg-[#080808] py-24 px-6">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <span className="text-[11px] font-mono text-white/30 tracking-widest uppercase">The flow</span>
+          <h2
+            className="mt-4 text-4xl md:text-5xl font-black tracking-tight text-white"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            From resume to offer.
+          </h2>
+        </div>
+
+        <div className="max-w-4xl mx-auto grid md:grid-cols-5 gap-0">
+          {[
+            { step: "01", label: "Upload resume" },
+            { step: "02", label: "Analyse gaps" },
+            { step: "03", label: "Build study plan" },
+            { step: "04", label: "Track applications" },
+            { step: "05", label: "Prep interview" },
+          ].map((s, i) => (
+            <div key={s.step} className="flex flex-col items-center text-center relative">
+              {/* Connector line */}
+              {i < 4 && (
+                <div className="hidden md:block absolute top-5 left-[calc(50%+20px)] right-[-50%] h-px bg-white/10" />
+              )}
+              <div className="w-10 h-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center mb-4 relative z-10">
+                <span className="text-[11px] font-mono text-white/40">{s.step}</span>
+              </div>
+              <span className="text-[13px] text-white/50 leading-snug">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

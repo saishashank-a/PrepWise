@@ -1,156 +1,77 @@
 "use client";
 
-import { motion } from "framer-motion";
+const included = [
+  "Resume upload & ATS scoring",
+  "Skill gap analysis vs any job description",
+  "AI resume tailoring (bring your own API key)",
+  "PDF & DOCX export",
+  "Application tracker — Kanban board",
+  "AI interview prep — role-specific questions",
+  "Study plan builder",
+  "50+ coding practice problems",
+  "In-browser Python, SQL & JS execution",
+];
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative py-32 bg-surface">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+    <section id="pricing" className="bg-white py-24 px-6 border-t border-black/[0.06]">
+      <div className="max-w-2xl mx-auto text-center mb-16">
+        <span className="text-[11px] font-mono text-black/30 tracking-widest uppercase">Pricing</span>
+        <h2
+          className="mt-4 text-5xl md:text-6xl font-black tracking-tight text-[#0a0a0a]"
+          style={{ fontFamily: "var(--font-display)" }}
         >
-          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
-            Pricing
-          </span>
-          <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Completely <span className="text-[#191c1c]">Free</span>
-          </h2>
-          <p className="max-w-2xl mx-auto text-[#474747] text-lg">
-            No credit card. No trial. No catch. Everything runs in your browser
-            on free-tier services.
-          </p>
-        </motion.div>
+          Free.<br />Forever.
+        </h2>
+        <p className="mt-4 text-[15px] text-[#666] max-w-sm mx-auto">
+          No credit card. No trial period. No catch.
+          Everything runs in your browser.
+        </p>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          {/* Free tier */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="rounded-2xl p-8 bg-white border-2 border-primary/30 shadow-md">
-              <div className="text-sm text-primary font-mono mb-4">
-                Free Forever
-              </div>
-              <div
-                className="text-5xl font-bold mb-1 text-foreground"
+      <div className="max-w-md mx-auto">
+        <div className="rounded-2xl border border-black/[0.08] overflow-hidden"
+          style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}>
+
+          {/* Header */}
+          <div className="bg-[#0a0a0a] px-8 py-8">
+            <div className="flex items-end gap-2 mb-2">
+              <span
+                className="text-6xl font-black text-white"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 $0
-                <span className="text-lg text-[#474747] font-normal">/mo</span>
-              </div>
-              <p className="text-sm text-[#474747] mb-8">
-                Everything you need to land your next role
-              </p>
-
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Resume upload & ATS scoring",
-                  "AI resume tailoring (with API key)",
-                  "PDF & DOCX export",
-                  "Gap analysis",
-                  "Application tracker",
-                  "Study plan builder",
-                  "Code editor with execution",
-                  "Auto-graded test cases",
-                  "50+ practice problems",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-[#191c1c]">
-                    <svg
-                      className="w-4 h-4 text-success flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="/dashboard"
-                className="block w-full py-3 rounded-xl text-center font-semibold text-white
-                           bg-primary hover:bg-primary/90
-                           transition-all duration-500"
-              >
-                Get Started Free
-              </a>
+              </span>
+              <span className="text-white/35 text-sm mb-3 font-mono">/ month</span>
             </div>
-          </motion.div>
+            <p className="text-white/40 text-sm">Everything included, always.</p>
+          </div>
 
-          {/* Pro tier (future) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="relative"
-          >
-            <div className="rounded-2xl p-8 bg-white border border-gray-200 shadow-sm">
-              <div className="text-sm text-[#777777] font-mono mb-4">
-                Pro (Coming Soon)
-              </div>
-              <div
-                className="text-5xl font-bold text-[#777777] mb-1"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                $?
-                <span className="text-lg font-normal">/mo</span>
-              </div>
-              <p className="text-sm text-[#777777] mb-8">Advanced AI features</p>
+          {/* Features list */}
+          <div className="bg-white px-8 py-8">
+            <ul className="space-y-3.5 mb-8">
+              {included.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[14px] text-[#333]">
+                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0a0a0a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
 
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Everything in Free",
-                  "Advanced AI analysis",
-                  "Unlimited AI generations",
-                  "Cover letter generation",
-                  "LinkedIn optimization",
-                  "Mock interviews",
-                  "Priority support",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-[#777777]">
-                    <svg
-                      className="w-4 h-4 text-[#c6c6c6] flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <a
+              href="/dashboard"
+              className="block w-full py-3.5 rounded-xl text-center font-semibold text-[15px]
+                         bg-[#0a0a0a] text-white hover:bg-black/80 transition-colors"
+            >
+              Get started — it's free
+            </a>
 
-              <button
-                disabled
-                className="block w-full py-3 rounded-xl text-center font-medium text-[#777777]
-                           border border-gray-200 cursor-not-allowed bg-[#f8faf9]"
-              >
-                Coming Soon
-              </button>
-            </div>
-          </motion.div>
+            <p className="text-center text-[12px] text-black/25 mt-4 font-mono">
+              No account required to start
+            </p>
+          </div>
         </div>
       </div>
     </section>

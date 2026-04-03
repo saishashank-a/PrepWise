@@ -16,6 +16,7 @@ export default function AddApplicationModal({ defaultStatus = "to_apply", onClos
     role: "",
     location: "",
     priority: "" as Priority | "",
+    jd: "",
     notes: "",
   });
 
@@ -31,6 +32,7 @@ export default function AddApplicationModal({ defaultStatus = "to_apply", onClos
       appliedDate: defaultStatus === "applied" ? new Date().toISOString() : null,
       interviewDate: null,
       interviewLink: null,
+      jd: form.jd,
       notes: form.notes,
     });
     onClose();
@@ -95,12 +97,22 @@ export default function AddApplicationModal({ defaultStatus = "to_apply", onClos
             </select>
           </div>
           <div>
+            <label className="text-[11px] font-mono uppercase tracking-widest text-[#777] block mb-1.5">Job Description</label>
+            <textarea
+              value={form.jd}
+              onChange={(e) => setForm((f) => ({ ...f, jd: e.target.value }))}
+              placeholder="Paste the job description here — used to generate interview questions..."
+              rows={4}
+              className="w-full bg-white border border-black/[0.1] rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-1 focus:ring-black/10 outline-none resize-none"
+            />
+          </div>
+          <div>
             <label className="text-[11px] font-mono uppercase tracking-widest text-[#777] block mb-1.5">Notes</label>
             <textarea
               value={form.notes}
               onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
               placeholder="Referral from John, interesting team..."
-              rows={3}
+              rows={2}
               className="w-full bg-white border border-black/[0.1] rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-1 focus:ring-black/10 outline-none resize-none"
             />
           </div>

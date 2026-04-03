@@ -1,148 +1,126 @@
 "use client";
 
-import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
-
-const ParticleField = dynamic(
-  () => import("@/components/three/ParticleField"),
-  { ssr: false }
-);
-
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-      {/* WebGL Background */}
-      <ParticleField />
+    <section className="relative min-h-screen bg-[#080808] flex flex-col items-center justify-center overflow-hidden px-6 pt-16">
 
-      {/* Radial gradient overlays */}
-      <div className="absolute inset-0 z-[1] overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.04] rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent" />
+      {/* Ambient glow — pure CSS, renders in SSR/headless */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full"
+          style={{ background: "radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%)" }} />
+        <div className="absolute bottom-0 left-0 right-0 h-48"
+          style={{ background: "linear-gradient(to top, #080808, transparent)" }} />
       </div>
 
+      {/* Noise grain overlay */}
+      <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: "128px 128px" }} />
+
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-20">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-gray-200 backdrop-blur-sm mb-8"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-          <span className="text-xs font-medium text-[#474747] tracking-wide uppercase">
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+
+        {/* Eyebrow */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] mb-10"
+          style={{ animation: "fadeUp 0.6s ease forwards", opacity: 0 }}>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ animation: "pulse 2s infinite" }} />
+          <span className="text-[11px] font-mono text-white/50 tracking-widest uppercase">
             Your Job Search Companion
           </span>
-        </motion.div>
+        </div>
 
         {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] tracking-tight mb-6 text-foreground"
-          style={{ fontFamily: "var(--font-display)" }}
+        <h1
+          className="text-[clamp(52px,10vw,112px)] font-black leading-[0.92] tracking-[-0.03em] text-white mb-8"
+          style={{ fontFamily: "var(--font-display)", animation: "fadeUp 0.7s 0.1s ease forwards", opacity: 0 }}
         >
-          <span className="block">Land Your Next</span>
-          <span className="block gradient-text">
-            Role, Faster
-          </span>
-        </motion.h1>
+          The job search,<br />
+          <span style={{ color: "rgba(255,255,255,0.35)" }}>rebuilt.</span>
+        </h1>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-[#474747] leading-relaxed mb-10"
-        >
-          Build ATS-optimized resumes, track your applications, and prepare for
-          interviews — all in one place.{" "}
-          <span className="text-foreground">
-            Free, private, runs in your browser.
-          </span>
-        </motion.p>
+        {/* Sub */}
+        <p className="max-w-xl mx-auto text-[17px] text-white/45 leading-relaxed mb-12"
+          style={{ animation: "fadeUp 0.7s 0.2s ease forwards", opacity: 0 }}>
+          Resume analysis. Gap scoring. Application tracking.
+          AI interview prep — tailored to your exact role.
+          <br />
+          <span className="text-white/65">Free. Private. Runs in your browser.</span>
+        </p>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center"
+          style={{ animation: "fadeUp 0.7s 0.3s ease forwards", opacity: 0 }}>
           <a
             href="/dashboard"
-            className="group relative px-8 py-4 rounded-xl font-semibold text-white
-                       bg-primary hover:bg-primary/90
-                       transition-all duration-500"
+            className="group px-8 py-3.5 rounded-xl font-semibold text-[15px] bg-white text-black
+                       hover:bg-white/90 transition-all duration-200 flex items-center gap-2"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              Get Started Free
-              <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </span>
+            Start for free
+            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </a>
           <a
             href="#features"
-            className="px-8 py-4 rounded-xl font-medium text-[#474747]
-                       border border-gray-300 hover:border-primary/40
-                       hover:text-foreground transition-all duration-300"
+            className="px-8 py-3.5 rounded-xl font-medium text-[15px] text-white/50
+                       border border-white/10 hover:border-white/20 hover:text-white/80
+                       transition-all duration-200"
           >
-            See How It Works
+            See how it works
           </a>
-        </motion.div>
+        </div>
 
-        {/* Tech stack pills */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-16 flex flex-wrap justify-center gap-3"
-        >
-          {[
-            "Pyodide (Python)",
-            "PGlite (PostgreSQL)",
-            "Monaco Editor",
-            "WebAssembly",
-            "Next.js",
-            "Firebase",
-          ].map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 text-xs font-mono text-[#474747] border border-gray-200 rounded-md bg-[#f8faf9]"
-            >
-              {tech}
-            </span>
-          ))}
-        </motion.div>
+        {/* Product screenshot */}
+        <div className="mt-20 relative"
+          style={{ animation: "fadeUp 0.9s 0.5s ease forwards", opacity: 0 }}>
+          {/* Glow behind screenshot */}
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-3/4 h-32 blur-3xl rounded-full"
+            style={{ background: "radial-gradient(ellipse, rgba(255,255,255,0.06) 0%, transparent 70%)" }} />
+
+          {/* Browser chrome */}
+          <div className="relative rounded-2xl overflow-hidden border border-white/[0.08]"
+            style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.04), 0 40px 80px rgba(0,0,0,0.8)" }}>
+            {/* Browser bar */}
+            <div className="bg-[#161616] px-4 py-3 flex items-center gap-3 border-b border-white/[0.06]">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-white/10" />
+                <div className="w-3 h-3 rounded-full bg-white/10" />
+                <div className="w-3 h-3 rounded-full bg-white/10" />
+              </div>
+              <div className="flex-1 bg-white/[0.04] rounded-md h-6 flex items-center justify-center">
+                <span className="text-[11px] text-white/25 font-mono">prepwise.vercel.app/tracker</span>
+              </div>
+            </div>
+            <img
+              src="/product/tracker.png"
+              alt="PrepWise Application Tracker"
+              className="w-full block"
+              style={{ imageRendering: "crisp-edges" }}
+            />
+          </div>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-text-muted/30 flex items-start justify-center pt-1.5"
-        >
-          <div className="w-1 h-1.5 rounded-full bg-primary/60" />
-        </motion.div>
-      </motion.div>
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style={{ animation: "fadeIn 1s 1.2s ease forwards", opacity: 0 }}>
+        <span className="text-[10px] font-mono text-white/25 tracking-widest uppercase">Scroll</span>
+        <div className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent" />
+      </div>
+
+      <style>{`
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50%       { opacity: 0.4; }
+        }
+      `}</style>
     </section>
   );
 }

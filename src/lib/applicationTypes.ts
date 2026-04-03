@@ -11,6 +11,7 @@ export interface Application {
   appliedDate: string | null;
   interviewDate: string | null;
   interviewLink: string | null;
+  jd: string;
   notes: string;
   createdAt: string;
   updatedAt: string;

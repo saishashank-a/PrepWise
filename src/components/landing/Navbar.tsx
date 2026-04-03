@@ -1,144 +1,95 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Resume Builder", href: "/resume-builder" },
-];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    const handler = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
   return (
-    <>
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-gray-200 py-3"
-            : "bg-transparent py-5"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9">
-              <div className="absolute inset-0 bg-primary/20 rounded-lg blur-md group-hover:bg-primary/30 transition-colors" />
-              <div className="relative w-full h-full bg-white rounded-lg border border-primary/20 flex items-center justify-center">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="text-primary"
-                >
-                  <path
-                    d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-            </div>
-            <span
-              className="text-lg font-bold tracking-tight text-foreground"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Prep<span className="text-primary">Wise</span>
-            </span>
-          </a>
-
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-4 py-2 text-sm text-[#474747] hover:text-foreground transition-colors rounded-lg hover:bg-[#f2f4f3]"
-              >
-                {link.label}
-              </a>
-            ))}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-black/90 backdrop-blur-xl border-b border-white/[0.06]"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <a href="/" className="flex items-center gap-2">
+          <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-black">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
+            </svg>
           </div>
+          <span className="text-white font-bold tracking-tight text-[15px]" style={{ fontFamily: "var(--font-display)" }}>
+            PrepWise
+          </span>
+        </a>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-1">
+          {[
+            { label: "Features", href: "#features" },
+            { label: "How it works", href: "#how-it-works" },
+            { label: "Pricing", href: "#pricing" },
+          ].map((link) => (
             <a
-              href="#"
-              className="px-4 py-2 text-sm text-[#474747] hover:text-foreground transition-colors"
+              key={link.label}
+              href={link.href}
+              className="px-4 py-2 text-sm text-white/60 hover:text-white transition-colors rounded-lg hover:bg-white/[0.06]"
             >
-              Sign In
+              {link.label}
             </a>
-            <a
-              href="/dashboard"
-              className="relative px-5 py-2.5 text-sm font-medium bg-primary text-white rounded-lg
-                         hover:bg-primary/90 transition-all duration-300"
-            >
-              <span className="relative z-10">Get Started</span>
-            </a>
-          </div>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
-          >
-            <span
-              className={`block w-5 h-[1.5px] bg-foreground transition-all ${
-                mobileOpen ? "rotate-45 translate-y-[4px]" : ""
-              }`}
-            />
-            <span
-              className={`block w-5 h-[1.5px] bg-foreground transition-all ${
-                mobileOpen ? "-rotate-45 -translate-y-[3px]" : ""
-              }`}
-            />
-          </button>
+          ))}
         </div>
-      </motion.nav>
+
+        {/* CTAs */}
+        <div className="hidden md:flex items-center gap-3">
+          <a href="/dashboard" className="text-sm text-white/60 hover:text-white transition-colors">
+            Sign in
+          </a>
+          <a
+            href="/dashboard"
+            className="px-4 py-2 text-sm font-medium bg-white text-black rounded-lg hover:bg-white/90 transition-colors"
+          >
+            Get started free
+          </a>
+        </div>
+
+        {/* Mobile */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Menu"
+        >
+          <span className={`block w-5 h-px bg-white transition-all ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+          <span className={`block w-5 h-px bg-white transition-all ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-px bg-white transition-all ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+        </button>
+      </div>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 pt-20 bg-white/95 backdrop-blur-xl md:hidden"
-          >
-            <div className="flex flex-col items-center gap-6 pt-10">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-light text-[#474747] hover:text-foreground transition-colors"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a
-                href="#"
-                className="mt-4 px-8 py-3 bg-primary text-white rounded-lg font-medium"
-              >
-                Get Started
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      {mobileOpen && (
+        <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/[0.06] px-6 py-8 flex flex-col gap-6">
+          {["Features", "How it works", "Pricing"].map((label) => (
+            <a key={label} href={`#${label.toLowerCase().replace(" ", "-")}`}
+              onClick={() => setMobileOpen(false)}
+              className="text-white/70 text-lg hover:text-white transition-colors">
+              {label}
+            </a>
+          ))}
+          <a href="/dashboard" className="mt-2 px-6 py-3 bg-white text-black text-center font-medium rounded-xl">
+            Get started free
+          </a>
+        </div>
+      )}
+    </nav>
   );
 }

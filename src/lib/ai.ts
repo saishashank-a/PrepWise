@@ -38,13 +38,54 @@ class GeminiProvider implements AIProvider {
   }
 }
 
+// --- Groq Provider (OpenAI-compatible, free tier) ---
+
+class GroqProvider implements AIProvider {
+  isConfigured(): boolean {
+    return !!process.env.NEXT_PUBLIC_GROQ_API_KEY;
+  }
+
+  async generate(prompt: string, systemPrompt?: string): Promise<string> {
+    const apiKey = process.env.NEXT_PUBLIC_GROQ_API_KEY;
+    if (!apiKey) throw new Error("Groq API key not configured");
+
+    const messages: { role: string; content: string }[] = [];
+    if (systemPrompt) messages.push({ role: "system", content: systemPrompt });
+    messages.push({ role: "user", content: prompt });
+
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages,
+        temperature: 0.7,
+        max_tokens: 1024,
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`Groq API error: ${err}`);
+    }
+
+    const data = await res.json();
+    return data.choices[0].message.content as string;
+  }
+}
+
 // --- Singleton ---
 
 let provider: AIProvider | null = null;
 
 export function getAI(): AIProvider {
   if (!provider) {
-    provider = new GeminiProvider();
+    // Prefer Groq, fall back to Gemini
+    const groq = new GroqProvider();
+    provider = groq.isConfigured() ? groq : new GeminiProvider();
   }
   return provider;
 }

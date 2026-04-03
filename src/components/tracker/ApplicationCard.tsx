@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Application } from "@/lib/applicationTypes";
 import { useApplicationStore } from "@/stores/useApplicationStore";
 
@@ -11,6 +12,7 @@ const PRIORITY_LABELS: Record<string, string> = {
 
 export default function ApplicationCard({ app }: { app: Application }) {
   const { moveApplication, deleteApplication } = useApplicationStore();
+  const router = useRouter();
 
   return (
     <div
@@ -44,6 +46,16 @@ export default function ApplicationCard({ app }: { app: Application }) {
             {new Date(app.interviewDate).toLocaleDateString()}
           </span>
         </div>
+      )}
+
+      {app.status === "interviewing" && (
+        <button
+          onClick={() => router.push(`/interview/${app.id}`)}
+          className="w-full mt-3 py-2 text-[11px] font-semibold bg-[#191c1c] text-white rounded-lg hover:bg-black/80 transition-colors flex items-center justify-center gap-1.5"
+        >
+          <span className="material-symbols-outlined text-[14px]">psychology</span>
+          Prep Interview
+        </button>
       )}
 
       <div className="flex items-center justify-between mt-2 pt-2 border-t border-black/[0.04]">
