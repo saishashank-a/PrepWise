@@ -45,3 +45,14 @@ firebase-debug.log
 *.tsbuildinfo
 next-env.d.ts
 .worktrees/
+
+# AI tool configs (local only)
+.agents/
+.claude/
+.junie/
+.playwright-mcp/
+.serena/
+.superpowers/
+stitch/
+skills/
+skills-lock.json
